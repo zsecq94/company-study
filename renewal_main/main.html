@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>렉스이노베이션</title>
+    <link rel="stylesheet" href="./style/slide.css" type="text/css" />
+    <link rel="stylesheet" href="./style/header.css" type="text/css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+    <script src="./components/slide.js"></script>
+    <script src="./components/header.js"></script>
+    <script>
+      $(document).ready(() => {
+        let lang = "KR";
+        $(".header-wrapper").hover(
+          () => {
+            $(".header-logo img").attr("src", "./images/logo_color.png");
+            $(".header-menu").css("color", "black");
+          },
+          () => {
+            $(".header-logo img").attr("src", "./images/logo_black.png");
+            $(".header-menu").css("color", "white");
+          }
+        );
+      });
+    </script>
+  </head>
+  <body>
+    <div class="slide-wrapper">
+      <div class="slide">
+        <div class="slider">
+          <img src="./images/bg1.png" />
+          <div class="slide-text">
+            <span class="title"
+              >렉스이노베이션의 첨단 정보통신 기술이 재생에너지의 스마트 그리드화를 이끌어 갑니다.</span
+            >
+            <span class="sub">지속가능한 에너지 공급과 환경보호를 동시에 실현하는 기업</span>
+          </div>
+        </div>
+        <div class="slider">
+          <img src="./images/bg2.png" />
+          <div class="slide-text">
+            <span class="title">친환경 미래기술을 선도하는 REC’s INNOVATION</span>
+            <span class="sub">
+              끊임없는 연구개발로 쌓아온 고도화된 기술력으로 더 나은 미래를 위한 솔루션을 제공합니다.
+            </span>
+          </div>
+        </div>
+        <div class="slider">
+          <img src="./images/bg3.png" />
+          <div class="slide-text">
+            <span class="title"
+              >청정 에너지로 우리의 미래를 밝혀나가는 길, 재생에너지의 힘과 혁신을 렉스이노베이션이 만들어갑니다.</span
+            >
+            <span class="sub">친환경 에너지를 통해 지구 환경을 보호하고 인류의 행복을 추구하는 기업</span>
+          </div>
+        </div>
+        <div class="slider">
+          <img src="./images/bg4.png" />
+          <div class="slide-text">
+            <span class="title">대한민국의 바다 환경을 이용한 육상양어장에 소수력발전소를 건설합니다.</span>
+            <span class="sub">친환경 소수력발전소 100기 건설로 에너지자립을 선도하는 기업</span>
+          </div>
+        </div>
+        <div class="slider">
+          <img src="./images/bg5.png" />
+          <div class="slide-text">
+            <span class="title">녹색금융 플랫폼 렉스펀드가 기후위기로부터 대한민국의 탄소중립을 앞당기겠습니다.</span>
+            <span class="sub">블록체인 기술을 활용한 Fintech 전문기업</span>
+          </div>
+        </div>
+      </div>
+      <div class="slide-bottom-wrapper">
+        <div class="slide-bottom">
+          <div class="slide-time-wrapper">
+            <div class="slide-number-text"></div>
+            <div class="timebar-wrapper">
+              <div class="timebar"></div>
+            </div>
+            <div class="slide-number-text2"><span>05</span></div>
+          </div>
+          <div class="slide-icon">
+            <img class="prev" src="./images/prev_icon.png" alt="" />
+            <img class="next" src="./images/start_icon.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <div class="header-wrapper">
+        <div class="header-logo">
+          <img src="./images/logo_black.png" alt="" />
+        </div>
+        <div class="header-menu">
+          <span>회사소개</span>
+          <span>비즈니스 분야</span>
+          <span>보유기술</span>
+          <span>IR</span>
+          <span>PR</span>
+        </div>
+        <div class="lang-btn-wrapper">
+          <div class="lang-btn">
+            <span>KR</span>
+            <span>|</span>
+            <span>EN</span>
+            <img src="./images/lang_icon.png" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="hi" style="height: 100vh"></div> -->
+  </body>
+</html>

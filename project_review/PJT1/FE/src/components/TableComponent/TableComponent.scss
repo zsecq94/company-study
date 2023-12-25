@@ -1,0 +1,27 @@
+.TableContainer {
+  border-radius: 20px;
+  max-height: 40vh;
+  &::-webkit-scrollbar {
+    width: 0.2rem;
+    background-color: #ff8c94;
+    &-thumb {
+      background-color: white;
+      width: 0.1rem;
+    }
+  }
+}
+
+.remove-btn {
+  border: none;
+  font-size: 1rem;
+  font-weight: 900;
+  padding: 0.2rem 0.5rem;
+  background-color: #d3d3d3;
+  cursor: pointer;
+  border-radius: 10px;
+  color: white;
+  transition: 0.3s ease-in-out;
+  &:hover {
+    background-color: #ff8c94;
+  }
+}

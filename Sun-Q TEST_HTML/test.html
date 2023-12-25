@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEST</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header-wrapper">
+        <img class="img1" src="logo.png" alt="logo" />
+        <div class="menu-wrapper">
+          <span class="menu">전력계통도</span>
+          <span class="menu">전력발전</span>
+          <span class="menu">전력저장</span>
+          <span class="menu">전력송전</span>
+          <span class="menu">장치관리</span>
+          <span class="menu">이상징후</span>
+          <span class="menu">보고서</span>
+        </div>
+        <div class="sub-menu-wrapper">
+          <span class="sub-menu" style="cursor: pointer"
+            >파주 태양광 발전소</span
+          >
+          <span class="sub-menu">ㅣ</span>
+          <i class="fas fa-cog fa-2x" style="color: white; cursor: pointer"></i>
+          <i
+            class="fas fa-chevron-circle-right fa-2x"
+            style="color: white; cursor: pointer"
+          ></i>
+        </div>
+      </div>
+      <div class="main-wrapper">
+        <div class="main-menu-wrapper">
+          <span id="menu0" class="main-menu-active" onclick="handleActiveNum(0)"
+            >장비알람설정</span
+          >
+          <span id="menu1" class="main-menu" onclick="handleActiveNum(1)"
+            >알림수신자설정</span
+          >
+          <span id="menu2" class="main-menu" onclick="handleActiveNum(2)"
+            >담당자설정</span
+          >
+        </div>
+        <div class="first-page">
+          <div class="main-title">
+            <span class="title1">장비알람 설정</span>
+            <span class="title2"
+              >장비이상이 발생할 경우 알람으로 확인할 수 있습니다. 알람을 수신할
+              장비를 선택해 주세요.</span
+            >
+          </div>
+          <div class="main-content">
+            <div class="main-content-title-wrapper">
+              <span class="main-content-10">번호</span>
+              <span class="main-content-15">장비구분</span>
+              <span class="main-content-15">장비코드</span>
+              <span class="main-content-15">식별코드</span>
+              <span class="main-content-15">알람 메시지</span>
+              <span class="main-content-15">유형</span>
+              <span class="main-content-15">선택</span>
+            </div>
+            <div class="main-content-detail-wrapper"></div>
+          </div>
+        </div>
+        <div class="second-page">
+          <div class="main-title">
+            <span class="title1">알림 수신자 설정</span>
+            <span class="title2"
+              >장비이상이 발생했을 경우 알람을 받을 알림 수신자를 등록해
+              주세요.</span
+            >
+          </div>
+          <div class="main-top">
+            <div class="main-top-dashed">
+              <span class="main-top-title"
+                >알림 수신자는 최대 3명까지 등록 가능합니다.</span
+              >
+            </div>
+            <div class="main-top-input">
+              <div class="main-top-input1">
+                <span style="color: white; margin-bottom: 10px; font-size: 14px"
+                  >성명</span
+                >
+                <input
+                  class="width-50-input"
+                  id="input-name"
+                  onkeyup="saveName()"
+                  type="text"
+                  placeholder="성명을 입력해 주세요."
+                />
+              </div>
+              <div class="main-top-input1">
+                <span style="color: white; margin-bottom: 10px; font-size: 14px"
+                  >휴대폰 번호</span
+                >
+                <input
+                  class="width-50-input"
+                  id="input-num"
+                  onkeyup="saveNum()"
+                  type="number"
+                  placeholder="- 없이 숫자만 입력해 주세요."
+                />
+              </div>
+            </div>
+            <div>
+              <div style="margin-bottom: 10px">
+                <span style="color: white; font-size: 14px">이메일</span>
+              </div>
+              <div
+                style="
+                  width: 100%;
+                  display: flex;
+                  flex-direction: row;
+                  align-items: center;
+                  justify-content: space-between;
+                "
+              >
+                <input
+                  id="input-email"
+                  onkeyup="saveEmail()"
+                  style="
+                    width: 32%;
+                    padding: 15px 0 15px 20px;
+                    background-color: #2d3a7c;
+                    border: none;
+                    border-radius: 8px;
+                    color: white;
+                    font-size: 18px;
+                  "
+                  type="text"
+                  placeholder="이메일"
+                />
+                <span style="color: white; font-size: 18px">@</span>
+                <input
+                  id="input-selected-domain"
+                  style="
+                    width: 32%;
+                    padding: 15px 0 15px 20px;
+                    background-color: #3f3f3f;
+                    border: none;
+                    border-radius: 8px;
+                    color: #676767;
+                    font-size: 18px;
+                  "
+                  type="text"
+                  disabled
+                  placeholder="도메인 선택"
+                />
+                <select
+                  id="input-domain"
+                  onchange="saveDomain()"
+                  name="languages"
+                  id="lang"
+                  style="
+                    width: 32%;
+                    padding: 15px 0 15px 20px;
+                    background-color: #2d3a7c;
+                    border: solid 1px white;
+                    border-radius: 8px;
+                    color: white;
+                    font-size: 18px;
+                  "
+                >
+                  <option value="">도메인 선택</option>
+                  <option value="naver.com">네이버</option>
+                  <option value="daum.net">다음</option>
+                  <option value="google.com">구글</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div style="text-align: center">
+            <button
+              onclick="saveData()"
+              style="
+                padding: 10px 30px 10px 30px;
+                border-radius: 6px;
+                background-color: #e83830;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                border: none;
+                cursor: pointer;
+                margin-bottom: 30px;
+              "
+            >
+              수신자 등록
+            </button>
+          </div>
+          <div class="main-content-title-wrapper">
+            <span class="main-content-8">번호</span>
+            <span class="main-content-23">성명</span>
+            <span class="main-content-23">휴대폰 번호</span>
+            <span class="main-content-23">이메일</span>
+            <span class="main-content-23">편집</span>
+          </div>
+          <div class="data-list"></div>
+        </div>
+        <div class="third-page">
+          <div class="main-title">
+            <span class="title1">담당자 설정</span>
+            <span class="title2"
+              >태양광 발전소의 대표 담당자 정보를 관리할 수 있습니다.</span
+            >
+          </div>
+          <div class="main-top">
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <span style="font-size: 18px; color: white; font-weight: lighter"
+                >비밀번호 변경</span
+              >
+              <span
+                style="
+                  font-size: 18px;
+                  color: red;
+                  font-weight: bold;
+                  background-color: white;
+                  padding: 8px 20px 8px 20px;
+                  border-radius: 6px;
+                  cursor: pointer;
+                "
+                >비밀번호 변경</span
+              >
+            </div>
+          </div>
+          <div class="main-top-test">
+            <div class="main-top-dashed">
+              <span class="main-top-title"
+                >모든 항목은 필수 항목입니다. 모두 입력과 선택을 해
+                주세요.</span
+              >
+            </div>
+            <div class="main-top-input">
+              <div class="main-top-input1">
+                <span style="color: white; margin-bottom: 10px; font-size: 14px"
+                  >아이디</span
+                >
+                <input
+                  class="width-50-input"
+                  id="input-id"
+                  onkeyup=""
+                  type="text"
+                  placeholder="zsecq94"
+                  style="background-color: #3f3f3f"
+                  disabled
+                />
+              </div>
+              <div class="main-top-input1">
+                <span class="input-label">성명</span>
+                <input
+                  class="width-50-input"
+                  id="input-name"
+                  onkeyup=""
+                  type="text"
+                  placeholder="성명을 입력해 주세요."
+                />
+              </div>
+            </div>
+            <div class="main-top-input">
+              <div class="main-top-input1">
+                <span class="input-label">회사</span>
+                <input
+                  class="width-50-input"
+                  id="input-id"
+                  onkeyup=""
+                  type="text"
+                  placeholder="렉스이노베이션"
+                  style="background-color: #3f3f3f"
+                  disabled
+                />
+              </div>
+              <div class="main-top-input1">
+                <span class="input-label">직급</span>
+                <select
+                  class="selected-box2"
+                  id="input-domain"
+                  onchange="saveDomain()"
+                  name="languages"
+                >
+                  <option value="">직급 선택</option>
+                  <option value="서울">부장</option>
+                  <option value="전남">팀장</option>
+                  <option value="대전">사원</option>
+                </select>
+              </div>
+            </div>
+            <div class="main-top-input">
+              <div class="main-top-input1">
+                <span class="input-label">연락처</span>
+                <input
+                  class="width-50-input"
+                  id="input-id"
+                  onkeyup=""
+                  type="number"
+                  placeholder="연락처를 입력해 주세요."
+                />
+              </div>
+              <div style="width: 50%">
+                <div style="margin-bottom: 10px">
+                  <span style="color: white; font-size: 14px">이메일</span>
+                </div>
+                <div
+                  style="
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: space-between;
+                  "
+                >
+                  <input
+                    id="input-email"
+                    onkeyup="saveEmail()"
+                    style="
+                      width: 30%;
+                      padding: 15px 0 15px 20px;
+                      background-color: #2d3a7c;
+                      border: none;
+                      border-radius: 8px;
+                      color: white;
+                      font-size: 18px;
+                    "
+                    type="text"
+                    placeholder="이메일"
+                  />
+                  <span style="color: white; font-size: 18px">@</span>
+                  <input
+                    id="input-selected-domain2"
+                    style="
+                      width: 30%;
+                      padding: 15px 0 15px 20px;
+                      background-color: #3f3f3f;
+                      border: none;
+                      border-radius: 8px;
+                      color: #676767;
+                      font-size: 18px;
+                    "
+                    type="text"
+                    disabled
+                    placeholder="도메인 선택"
+                  />
+                  <select
+                    id="input-domain2"
+                    onchange="saveDomain2()"
+                    name="email"
+                    id="lang"
+                    style="
+                      width: 30%;
+                      padding: 15px 0 15px 20px;
+                      background-color: #2d3a7c;
+                      border: solid 1px white;
+                      border-radius: 8px;
+                      color: white;
+                      font-size: 18px;
+                    "
+                  >
+                    <option value="">도메인 선택</option>
+                    <option value="naver.com">네이버</option>
+                    <option value="daum.net">다음</option>
+                    <option value="google.com">구글</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="main-top-input">
+              <div class="main-top-input1">
+                <span class="input-label">사업자번호</span>
+                <input
+                  class="width-50-input"
+                  id="input-id"
+                  onkeyup=""
+                  type="text"
+                  placeholder="사업자 번호를 입력해 주세요."
+                />
+              </div>
+              <div class="main-top-input2">
+                <div style="margin-bottom: 6px">
+                  <span style="color: white; font-size: 14px">발전소 위치</span>
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    gap: 10px;
+                  "
+                >
+                  <select
+                    class="selected-box"
+                    id="input-domain"
+                    onchange="saveDomain()"
+                    name="languages"
+                  >
+                    <option value="">지역 선택</option>
+                    <option value="서울">서울</option>
+                    <option value="전남">전남</option>
+                    <option value="대전">대전</option>
+                  </select>
+                  <select
+                    class="selected-box"
+                    id="input-domain"
+                    onchange="saveDomain()"
+                    name="languages"
+                  >
+                    <option value="">시 선택</option>
+                    <option value="나주시">나주시</option>
+                  </select>
+                  <select
+                    class="selected-box"
+                    id="input-domain"
+                    onchange="saveDomain()"
+                    name="languages"
+                  >
+                    <option value="">동 선택</option>
+                    <option value="빛가람동">빛가람동</option>
+                    <option value="송월동">송월동</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="main-top-input3">
+              <span class="input-label">사업장 주소</span>
+              <div
+                style="display: flex; gap: 20px; justify-content: space-between"
+              >
+                <input
+                  placeholder="우편번호"
+                  id="input-id"
+                  onkeyup=""
+                  type="text"
+                  style="
+                    width: 16%;
+                    padding: 15px 0 15px 20px;
+                    background-color: #3f3f3f;
+                    border: none;
+                    border-radius: 8px;
+                    color: white;
+                    font-size: 18px;
+                  "
+                  disabled
+                />
+                <input
+                  placeholder="주소"
+                  id="input-id"
+                  onkeyup=""
+                  type="text"
+                  style="
+                    width: 36%;
+                    padding: 15px 0 15px 20px;
+                    border: none;
+                    border-radius: 8px;
+                    color: white;
+                    font-size: 18px;
+                    background-color: #3f3f3f;
+                  "
+                  disabled
+                />
+                <input
+                  id="input-id"
+                  onkeyup=""
+                  type="text"
+                  placeholder="나머지 주소를 입력해주세요."
+                  style="
+                    width: 36%;
+                    padding: 15px 0 15px 20px;
+                    background-color: #2d3a7c;
+                    border: none;
+                    border-radius: 8px;
+                    color: white;
+                    font-size: 18px;
+                  "
+                />
+                <span
+                  style="
+                    padding: 13px 30px 13px 30px;
+                    background-color: white;
+                    border-radius: 6px;
+                    font-size: 19px;
+                    font-weight: bold;
+                    cursor: pointer;
+                  "
+                  >주소검색</span
+                >
+              </div>
+            </div>
+          </div>
+          <div
+            style="
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              gap: 10px;
+            "
+          >
+            <button
+              style="
+                width: 150px;
+                height: 60px;
+                font-size: 20px;
+                font-weight: bold;
+                border-radius: 6px;
+                background-color: red;
+                color: white;
+                cursor: pointer;
+              "
+            >
+              정보변경
+            </button>
+            <button
+              style="
+                width: 150px;
+                height: 60px;
+                font-size: 20px;
+                font-weight: bold;
+                border-radius: 6px;
+                background-color: black;
+                color: white;
+                cursor: pointer;
+              "
+            >
+              취소
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 100px"></div>
+    <div class="footer">
+      Copyright ⓒ 2023 Rec’s Innovation All rights reserved.
+    </div>
+
+    <script>
+      const data = [
+        {
+          장비구분: "태양광 모듈",
+          장비코드: "장비코드1",
+          식별코드: "식별코드1",
+          메시지: "메시지",
+          유형: "Error",
+        },
+        {
+          장비구분: "태양광 모듈",
+          장비코드: "장비코드2",
+          식별코드: "식별코드2",
+          메시지: "메시지메시지",
+          유형: "Warning",
+        },
+        {
+          장비구분: "태양광 모듈",
+          장비코드: "장비코드3",
+          식별코드: "식별코드3",
+          메시지: "메시지메시지메시지",
+          유형: "Error",
+        },
+        {
+          장비구분: "DC/DC 컨버터",
+          장비코드: "장비코드4",
+          식별코드: "식별코드4",
+          메시지: "메시지메시지메시지메시지",
+          유형: "Error",
+        },
+        {
+          장비구분: "DC/DC 컨버터",
+          장비코드: "장비코드5",
+          식별코드: "식별코드5",
+          메시지: "메시지메시지",
+          유형: "Warning",
+        },
+        {
+          장비구분: "DC/DC 컨버터",
+          장비코드: "장비코드6",
+          식별코드: "식별코드6",
+          메시지: "메시지 입니다~!@",
+          유형: "Warning",
+        },
+        {
+          장비구분: "접속반",
+          장비코드: "장비코드7",
+          식별코드: "식별코드7",
+          메시지: "메시지메시지 메시지 메시지",
+          유형: "Warning",
+        },
+        {
+          장비구분: "접속반",
+          장비코드: "장비코드8",
+          식별코드: "식별코드8",
+          메시지: "메시는 리오넬 메시",
+          유형: "Error",
+        },
+        {
+          장비구분: "인버터",
+          장비코드: "장비코드9",
+          식별코드: "식별코드9",
+          메시지: "메시지메시지메시지",
+          유형: "Warning",
+        },
+        {
+          장비구분: "인버터",
+          장비코드: "장비코드10",
+          식별코드: "식별코드10",
+          메시지: "메시지 메시지 메시지 메시지",
+          유형: "Error",
+        },
+        {
+          장비구분: "인버터",
+          장비코드: "장비코드11",
+          식별코드: "식별코드11",
+          메시지: "메시지",
+          유형: "Warning",
+        },
+      ];
+      let activeNum = 0;
+
+      const handleActiveNum = (num) => {
+        for (let i = 0; i < 3; i++) {
+          document.getElementById(`menu${i}`).className = "main-menu";
+        }
+        document.getElementById(`menu${num}`).className = "main-menu-active";
+
+        const firstPage = document.getElementsByClassName("first-page")[0];
+        const secondPage = document.getElementsByClassName("second-page")[0];
+        const thirdPage = document.getElementsByClassName("third-page")[0];
+
+        if (num === 0) {
+          firstPage.style.display = "block";
+          secondPage.style.display = "none";
+          thirdPage.style.display = "none";
+        } else if (num === 1) {
+          firstPage.style.display = "none";
+          secondPage.style.display = "block";
+          thirdPage.style.display = "none";
+        } else {
+          firstPage.style.display = "none";
+          secondPage.style.display = "none";
+          thirdPage.style.display = "block";
+        }
+      };
+
+      handleActiveNum(0);
+
+      const detailElement = document.querySelector(
+        ".main-content-detail-wrapper"
+      );
+
+      for (let i = 0; i < data.length; i++) {
+        let className =
+          i % 2 === 0 ? "main-content-detail" : "main-content-detail-bg";
+        detailElement.innerHTML += `
+            <div class="${className}">
+              <span class="main-content-10">${i + 1}</span>               
+              <div class="main-content-detail-15-left"><span class="left-text">${
+                data[i].장비구분
+              }</span></div>
+              <span class="main-content-15">${data[i].장비코드}</span>
+              <span class="main-content-15">${data[i].식별코드}</span>
+              <div class="main-content-detail-15-left"><span class="left-text">${
+                data[i].메시지
+              }</span></div>
+              <span class="main-content-15">${data[i].유형}</span>
+              <div class="main-content-15">
+                <input type="checkbox"></input>
+              </div>
+            </div>
+        `;
+      }
+
+      let name;
+      let number;
+      let email;
+      let domain;
+      let domain2;
+
+      const saveName = () => {
+        name = document.getElementById("input-name").value;
+      };
+
+      const saveNum = () => {
+        number = document.getElementById("input-num").value;
+      };
+
+      const saveEmail = () => {
+        email = document.getElementById("input-email").value;
+      };
+      const saveDomain = () => {
+        const selected = document.getElementById("input-domain");
+        domain = selected.options[selected.selectedIndex].value;
+        const detailElement = document.getElementById("input-selected-domain");
+        if (domain.length === 0) {
+          detailElement.value = "도메인 선택";
+          detailElement.disabled = true;
+          detailElement.style.backgroundColor = "#3f3f3f";
+          detailElement.style.color = "#676767";
+        } else {
+          detailElement.value = domain;
+          detailElement.style.backgroundColor = "#2d3a7c";
+          detailElement.style.color = "white";
+          detailElement.placeholder = "도메인 선택";
+        }
+      };
+
+      const saveDomain2 = () => {
+        const selected = document.getElementById("input-domain2");
+        domain2 = selected.options[selected.selectedIndex].value;
+        const domain2Element = document.getElementById(
+          "input-selected-domain2"
+        );
+        if (domain2.length === 0) {
+          domain2Element.value = "도메인 선택";
+          domain2Element.style.backgroundColor = "#3f3f3f";
+          domain2Element.style.color = "#676767";
+        } else {
+          domain2Element.value = domain2;
+          domain2Element.style.backgroundColor = "#2d3a7c";
+          domain2Element.style.color = "white";
+          domain2Element.placeholder = "도메인 선택";
+        }
+      };
+
+      let dataList = [];
+
+      const saveData = () => {
+        if (name && number && email && domain && dataList.length < 3) {
+          const data = {
+            name: name,
+            number: number,
+            email: `${email}@${domain}`,
+          };
+          dataList.push(data);
+
+          const detailElement3 = document.querySelector(".data-list");
+
+          let html = "<div>";
+          for (let i = 0; i < dataList.length; i++) {
+            let className =
+              i % 2 === 0 ? "main-content-detail" : "main-content-detail-bg";
+
+            html += `
+            <div class="${className}">
+              <span class="main-content-8">${i + 1}</span>
+              <span class="main-content-23">${dataList[i].name}</span>
+              <span class="main-content-23">${dataList[i].number}</span>
+              <span class="main-content-23">${dataList[i].email}</span>
+              <div class="main-content-23">                
+                <button onclick="removeItem(${
+                  dataList[i].number
+                })" class="btn1">삭제</button>
+              </div>
+            </div>
+            `;
+          }
+          html += "</div>";
+          detailElement3.innerHTML = html;
+          const nameElement = document.getElementById("input-name");
+          const numElement = document.getElementById("input-num");
+          const emailElement = document.getElementById("input-email");
+          const selectElement = document.getElementById("input-domain");
+          const domainElement = document.getElementById(
+            "input-selected-domain"
+          );
+          name = "";
+          email = "";
+          domain = "";
+          number = "";
+          nameElement.value = "";
+          numElement.value = "";
+          emailElement.value = "";
+          selectElement.value = "";
+          domainElement.value = "";
+          domainElement.disabled = true;
+          domainElement.style.backgroundColor = "#3f3f3f";
+          domainElement.style.color = "#676767";
+        } else if (dataList.length >= 3) {
+          alert("알림 수신자는 최대 3명까지 등록 가능합니다!");
+        } else {
+          alert("모두 선택해 주세요!");
+        }
+      };
+
+      const removeItem = (num) => {
+        dataList = dataList.filter((V) => String(num) !== V.number);
+        const detailElement3 = document.querySelector(".data-list");
+
+        let html = "<div>";
+        for (let i = 0; i < dataList.length; i++) {
+          let className =
+            i % 2 === 0 ? "main-content-detail" : "main-content-detail-bg";
+
+          html += `
+            <div class="${className}">
+              <span class="main-content-8">${i + 1}</span>
+              <span class="main-content-23">${dataList[i].name}</span>
+              <span class="main-content-23">${dataList[i].number}</span>
+              <span class="main-content-23">${dataList[i].email}</span>
+              <div class="main-content-23-btn">                
+                <button onclick="removeItem(${
+                  dataList[i].number
+                })" class="btn1">삭제</button>
+              </div>
+            </div>
+          `;
+        }
+        html += "</div>";
+        detailElement3.innerHTML = html;
+      };
+    </script>
+  </body>
+</html>

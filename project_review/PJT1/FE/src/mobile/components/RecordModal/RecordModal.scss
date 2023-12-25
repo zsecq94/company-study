@@ -1,0 +1,55 @@
+.recordmodal-main {
+  margin: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  .recordmodal-main-icons {
+    display: flex;
+    gap: 4rem;
+    .Mrecordbutton {
+      display: flex;
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      padding: 0.5rem;
+      border-radius: 60px;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+    }
+    .Mplaybutton {
+      display: flex;
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      padding: 0.5rem;
+      border-radius: 60px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .saverecord {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+  }
+  .saverecordV {
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+  }
+  .removerecord {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+  }
+  .removerecordV {
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem 1rem;
+  }
+}

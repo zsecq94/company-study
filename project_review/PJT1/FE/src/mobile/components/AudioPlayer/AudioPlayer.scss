@@ -1,0 +1,16 @@
+.audio-wrapper{
+    .audio-playbtn {
+        border: none;
+        font-size: 1rem;
+        background-color: transparent;
+        cursor: pointer;
+        .audio-playdiv {
+            background-color: white;
+            padding: 0.2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 40px;
+        }
+    }
+}

@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEST</title>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header-wrapper">
+        <img class="img1" src="logo.png" alt="logo" />
+        <div class="menu-wrapper">
+          <span class="menu">전력계통도</span>
+          <span class="menu">전력발전</span>
+          <span class="menu">전력저장</span>
+          <span class="menu">전력송전</span>
+          <span class="menu">장치관리</span>
+          <span class="menu">이상징후</span>
+          <span class="menu">보고서</span>
+        </div>
+        <div class="sub-menu-wrapper">
+          <span class="sub-menu1">파주 태양광 발전소</span>
+          <span class="sub-menu2">|</span>
+          <i class="fas fa-cog fa-2x"></i>
+          <i class="fas fa-chevron-circle-right fa-2x"></i>
+        </div>
+      </div>
+      <div class="main-wrapper">
+        <div class="main-menu-wrapper">
+          <span id="menu0" class="main-menu-active" onclick="handleActiveNum(0)"
+            >장비알람설정</span
+          >
+          <span id="menu1" class="main-menu" onclick="handleActiveNum(1)"
+            >알림수신자설정</span
+          >
+          <span id="menu2" class="main-menu" onclick="handleActiveNum(2)"
+            >담당자설정</span
+          >
+        </div>
+        <div class="first-page">
+          <div class="main-title">
+            <span class="title1">장비알람 설정</span>
+            <span class="title2"
+              >장비이상이 발생할 경우 알람으로 확인할 수 있습니다. 알람을 수신할
+              장비를 선택해 주세요.</span
+            >
+          </div>
+          <div class="main-content">
+            <div class="main-content-title-wrapper">
+              <span class="main-content-10">번호</span>
+              <span class="main-content-15">장비구분</span>
+              <span class="main-content-15">장비코드</span>
+              <span class="main-content-15">식별코드</span>
+              <span class="main-content-15">알람 메시지</span>
+              <span class="main-content-15">유형</span>
+              <span class="main-content-15">선택</span>
+            </div>
+            <div class="main-content-detail-wrapper"></div>
+          </div>
+        </div>
+        <div class="second-page">
+          <div class="main-title">
+            <span class="title1">알림 수신자 설정</span>
+            <span class="title2"
+              >장비이상이 발생했을 경우 알람을 받을 알림 수신자를 등록해
+              주세요.</span
+            >
+          </div>
+          <div class="main-top">
+            <div class="main-top-dashed">
+              <span class="main-top-title"
+                >알림 수신자는 최대 3명까지 등록 가능합니다.</span
+              >
+            </div>
+            <div class="main-top-input">
+              <div class="main-top-input1">
+                <span class="main-top-span">성명</span>
+                <input
+                  class="width-50-input"
+                  id="input-name"
+                  onkeyup="save('name')"
+                  type="text"
+                  placeholder="성명을 입력해 주세요."
+                />
+              </div>
+              <div class="main-top-input1">
+                <span class="main-top-span">휴대폰 번호</span>
+                <input
+                  class="width-50-input"
+                  id="input-number"
+                  onkeyup="save('number')"
+                  type="number"
+                  placeholder="- 없이 숫자만 입력해 주세요."
+                />
+              </div>
+            </div>
+            <div class="main-top-input3 column">
+              <span class="main-top-span">이메일</span>
+
+              <div class="input-email-wrapper">
+                <input
+                  class="input-email"
+                  id="input-email"
+                  onkeyup="save('email')"
+                  type="text"
+                  placeholder="이메일"
+                />
+                <span class="input-email-span">@</span>
+                <input
+                  class="input-selected-domain-class"
+                  id="input-selected-domain1"
+                  onkeyup="save('domain1')"
+                  type="text"
+                  disabled
+                  placeholder="도메인 선택"
+                />
+                <select
+                  class="input-domain-class"
+                  id="input-domain1"
+                  onchange="saveDomain(1)"
+                  name="languages"
+                >
+                  <option value="">도메인 선택</option>
+                  <option value="naver.com">네이버</option>
+                  <option value="daum.net">다음</option>
+                  <option value="google.com">구글</option>
+                  <option value="직접입력">직접입력</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="save-data-btn-wrapper">
+            <button class="save-data-btn" onclick="saveData()">
+              수신자 등록
+            </button>
+          </div>
+          <div class="main-content-title-wrapper">
+            <span class="main-content-8">번호</span>
+            <span class="main-content-23">성명</span>
+            <span class="main-content-23">휴대폰 번호</span>
+            <span class="main-content-23">이메일</span>
+            <span class="main-content-23">편집</span>
+          </div>
+          <div class="data-list"></div>
+        </div>
+        <div class="third-page">
+          <div class="main-title">
+            <span class="title1">담당자 설정</span>
+            <span class="title2"
+              >태양광 발전소의 대표 담당자 정보를 관리할 수 있습니다.</span
+            >
+          </div>
+          <div class="main-top">
+            <div class="password-wrapper">
+              <span class="input-email-span">비밀번호 변경</span>
+              <span onclick="handleModal()" class="password-change-btn"
+                >비밀번호 변경</span
+              >
+            </div>
+          </div>
+          <div class="main-top-test">
+            <div class="main-top-dashed">
+              <span class="main-top-title"
+                >모든 항목은 필수 항목입니다. 모두 입력과 선택을 해
+                주세요.</span
+              >
+            </div>
+            <div class="main-top-input">
+              <div class="main-top-input1">
+                <span class="input-label">아이디</span>
+                <input
+                  class="width-50-input disabled"
+                  id="input-id"
+                  type="text"
+                  placeholder="zsecq94"
+                  disabled
+                />
+              </div>
+              <div class="main-top-input1">
+                <span class="input-label">성명</span>
+                <input
+                  onkeyup="save2('name2')"
+                  class="width-50-input"
+                  id="input-name2"
+                  onkeyup=""
+                  type="text"
+                  placeholder="성명을 입력해 주세요."
+                />
+              </div>
+            </div>
+            <div class="main-top-input">
+              <div class="main-top-input1">
+                <span class="input-label">회사</span>
+                <input
+                  class="width-50-input disabled"
+                  id="input-id"
+                  type="text"
+                  placeholder="렉스이노베이션"
+                  disabled
+                />
+              </div>
+              <div class="main-top-input1">
+                <span class="input-label">직급</span>
+                <select
+                  class="selected-box2"
+                  id="input-rank"
+                  onchange="save2('rank')"
+                  name="languages"
+                >
+                  <option class="selected-el" value="">직급 선택</option>
+                  <option class="selected-el" value="부장">부장</option>
+                  <option class="selected-el" value="팀장">팀장</option>
+                  <option class="selected-el" value="사원">사원</option>
+                </select>
+              </div>
+            </div>
+            <div class="main-top-input">
+              <div class="main-top-input1">
+                <span class="input-label">연락처</span>
+                <input
+                  class="width-50-input"
+                  onkeyup="save2('number2')"
+                  id="input-number2"
+                  type="number"
+                  placeholder="연락처를 입력해 주세요."
+                />
+              </div>
+              <div style="width: 50%">
+                <div class="main-top-input3 column">
+                  <span class="main-top-span">이메일</span>
+
+                  <div class="input-email-wrapper">
+                    <input
+                      class="input-email"
+                      id="input-email2"
+                      onkeyup="save2('email2')"
+                      type="text"
+                      placeholder="이메일"
+                    />
+                    <span class="input-email-span">@</span>
+                    <input
+                      class="input-selected-domain-class"
+                      id="input-selected-domain2"
+                      onkeyup="save2('domain2')"
+                      type="text"
+                      disabled
+                      placeholder="도메인 선택"
+                    />
+                    <select
+                      class="input-domain-class"
+                      id="input-domain2"
+                      onchange="saveDomain(2)"
+                      name="languages"
+                    >
+                      <option class="selected-el" value="">도메인 선택</option>
+                      <option class="selected-el" value="naver.com">
+                        네이버
+                      </option>
+                      <option class="selected-el" value="daum.net">다음</option>
+                      <option class="selected-el" value="google.com">
+                        구글
+                      </option>
+                      <option class="selected-el" value="직접입력">
+                        직접입력
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="main-top-input">
+              <div class="main-top-input1">
+                <span class="input-label">사업자번호</span>
+                <input
+                  onkeyup="save2('number3')"
+                  class="width-50-input"
+                  id="input-number3"
+                  type="number"
+                  placeholder="사업자 번호를 입력해 주세요."
+                />
+              </div>
+              <div class="main-top-input2">
+                <div class="input-label">
+                  <span>발전소 위치</span>
+                </div>
+
+                <div class="selected-box-wrapper">
+                  <select
+                    class="selected-box"
+                    id="input-region"
+                    onchange="save2('region')"
+                    name="languages"
+                  >
+                    <option class="selected-el" value="">지역 선택</option>
+                    <option class="selected-el" value="서울">서울</option>
+                    <option class="selected-el" value="전남">전남</option>
+                    <option class="selected-el" value="대전">대전</option>
+                  </select>
+                  <select
+                    class="selected-box"
+                    id="input-city"
+                    onchange="save2('city')"
+                    name="languages"
+                  >
+                    <option class="selected-el" value="">시 선택</option>
+                    <option class="selected-el" value="나주시">성남시</option>
+                    <option class="selected-el" value="나주시">서울시</option>
+                    <option class="selected-el" value="나주시">나주시</option>
+                  </select>
+                  <select
+                    class="selected-box"
+                    id="input-dong"
+                    onchange="save2('dong')"
+                    name="languages"
+                  >
+                    <option class="selected-el" value="">동 선택</option>
+                    <option class="selected-el" value="빛가람동">
+                      빛가람동
+                    </option>
+                    <option class="selected-el" value="송월동">송월동</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="main-top-input3">
+              <span class="input-label">사업장 주소</span>
+              <div class="input-email-wrapper">
+                <input
+                  class="address-input1"
+                  placeholder="우편번호"
+                  onkeyup=""
+                  type="text"
+                  disabled
+                />
+                <input
+                  class="address-input2 disabled"
+                  placeholder="주소"
+                  id="input-id"
+                  onkeyup=""
+                  type="text"
+                  disabled
+                />
+                <input
+                  class="address-input2 enabled"
+                  id="input-address"
+                  onkeyup="save2('address')"
+                  type="text"
+                  placeholder="나머지 주소를 입력해주세요."
+                />
+                <span class="address-search-btn">주소검색</span>
+              </div>
+            </div>
+          </div>
+          <div class="add-btn-wrapper">
+            <button onclick="saveData2()" class="add-btn1">정보변경</button>
+            <button class="add-btn2">취소</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="height: 100px"></div>
+    <div class="footer">
+      Copyright ⓒ 2023 Rec’s Innovation All rights reserved.
+    </div>
+    <div class="modal-container">
+      <div class="modal" style="display: none"></div>
+    </div>
+    <script>
+      const data = [
+        {
+          divide: "태양광 모듈",
+          code1: "장비코드1",
+          code2: "식별코드1",
+          message: "메시지",
+          category: "Error",
+        },
+        {
+          divide: "태양광 모듈",
+          code1: "장비코드2",
+          code2: "식별코드2",
+          message: "메시지메시지",
+          category: "Warning",
+        },
+        {
+          divide: "태양광 모듈",
+          code1: "장비코드3",
+          code2: "식별코드3",
+          message: "메시지메시지메시지",
+          category: "Error",
+        },
+        {
+          divide: "DC/DC 컨버터",
+          code1: "장비코드4",
+          code2: "식별코드4",
+          message: "메시지메시지메시지메시지",
+          category: "Error",
+        },
+        {
+          divide: "DC/DC 컨버터",
+          code1: "장비코드5",
+          code2: "식별코드5",
+          message: "메시지메시지",
+          category: "Warning",
+        },
+        {
+          divide: "DC/DC 컨버터",
+          code1: "장비코드6",
+          code2: "식별코드6",
+          message: "메시지 입니다~!@",
+          category: "Warning",
+        },
+        {
+          divide: "접속반",
+          code1: "장비코드7",
+          code2: "식별코드7",
+          message: "메시지메시지 메시지 메시지",
+          category: "Warning",
+        },
+        {
+          divide: "접속반",
+          code1: "장비코드8",
+          code2: "식별코드8",
+          message: "메시는 리오넬 메시",
+          category: "Error",
+        },
+        {
+          divide: "인버터",
+          code1: "장비코드9",
+          code2: "식별코드9",
+          message: "메시지메시지메시지",
+          category: "Warning",
+        },
+        {
+          divide: "인버터",
+          code1: "장비코드10",
+          code2: "식별코드10",
+          message: "메시지 메시지 메시지 메시지",
+          category: "Error",
+        },
+        {
+          divide: "인버터",
+          code1: "장비코드11",
+          code2: "식별코드11",
+          message: "메시지",
+          category: "Warning",
+        },
+      ];
+      let activeNum = 0;
+
+      const handleActiveNum = (num) => {
+        for (let i = 0; i < 3; i++) {
+          $(`#menu${i}`).attr("class", "main-menu");
+        }
+        $(`#menu${num}`).attr("class", "main-menu-active");
+
+        const firstPage = $(".first-page");
+        const secondPage = $(".second-page");
+        const thirdPage = $(".third-page");
+
+        if (num === 0) {
+          firstPage.css("display", "block");
+          secondPage.css("display", "none");
+          thirdPage.css("display", "none");
+        } else if (num === 1) {
+          firstPage.css("display", "none");
+          secondPage.css("display", "block");
+          thirdPage.css("display", "none");
+        } else {
+          firstPage.css("display", "none");
+          secondPage.css("display", "none");
+          thirdPage.css("display", "block");
+        }
+      };
+
+      handleActiveNum(0);
+
+      const detailElement = $(".main-content-detail-wrapper");
+
+      for (let i = 0; i < data.length; i++) {
+        let className =
+          i % 2 === 0 ? "main-content-detail" : "main-content-detail bg";
+        detailElement.append(`
+            <div class="${className}">
+              <span class="main-content-10">${i + 1}</span>
+              <div class="main-content-detail-15-left"><span class="left-text">${
+                data[i].divide
+              }</span></div>
+              <span class="main-content-15">${data[i].code1}</span>
+              <span class="main-content-15">${data[i].code2}</span>
+              <div class="main-content-detail-15-left"><span class="left-text">${
+                data[i].message
+              }</span></div>
+              <span class="main-content-15">${data[i].category}</span>
+              <div class="main-content-15">
+                <input id="check_btn" type="checkbox" />
+              </div>
+            </div>
+        `);
+      }
+
+      let saveDatas1 = {
+        name: "",
+        number: "",
+        email: "",
+        domain1: "",
+      };
+
+      let saveDatas2 = {
+        name2: "",
+        rank: "",
+        number2: "",
+        number3: "",
+        email2: "",
+        domain2: "",
+        region: "",
+        city: "",
+        dong: "",
+        address: "",
+      };
+
+      const save = (val) => {
+        saveDatas1[val] = $(`#input-${val}`).val();
+        if (val === "domain1") {
+          saveDatas1[val] = $(`#input-selected-domain1`).val();
+        }
+      };
+
+      const save2 = (val) => {
+        saveDatas2[val] = $(`#input-${val}`).val();
+        if (val === "domain2") {
+          saveDatas2[val] = $(`#input-selected-domain2`).val();
+        }
+      };
+
+      const saveDomain = (num) => {
+        const value = $(`#input-domain${num} option:selected`).val();
+        const selectedElement = $(`#input-selected-domain${num}`);
+
+        if (num === 1) {
+          saveDatas1["domain1"] = value;
+        } else {
+          saveDatas2["domain2"] = value;
+        }
+        if (num === 1 && !saveDatas1[`domain${num}`]) {
+          selectedElement.val("도메인 선택");
+          selectedElement.attr("disabled", true);
+          selectedElement.css("background-color", "#3f3f3f");
+          selectedElement.css("color", "#676767");
+        } else if (num === 2 && !saveDatas2[`domain${num}`]) {
+          selectedElement.val("도메인 선택");
+          selectedElement.attr("disabled", true);
+          selectedElement.css("background-color", "#3f3f3f");
+          selectedElement.css("color", "#676767");
+        } else if (value === "직접입력") {
+          selectedElement.val("");
+          selectedElement.attr("disabled", false);
+          selectedElement.css("background-color", "#2d3a7c");
+          selectedElement.css("color", "white");
+        } else {
+          selectedElement.val(value);
+          selectedElement.attr("disabled", true);
+          selectedElement.css("background-color", "#2d3a7c");
+          selectedElement.css("color", "white");
+          selectedElement.attr("placeholder", "도메인 선택");
+        }
+      };
+
+      const validCheck = () => {
+        if (
+          saveDatas1["name"] &&
+          saveDatas1["number"] &&
+          saveDatas1["email"] &&
+          saveDatas1["domain1"]
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      };
+
+      let dataList = [];
+      const saveData = () => {
+        console.log(saveDatas1);
+        const newEmail = saveDatas1["email"] + "@" + saveDatas1["domain1"];
+        let regex = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-za-z0-9\-]+/;
+        const check = regex.test(newEmail);
+
+        if (!check) {
+          return alert("이메일 형식에 맞게 다시 입력해주세요!");
+        } else if (dataList.length >= 3) {
+          return alert("알림 수신자는 최대 3명까지 등록 가능합니다!");
+        } else if (validCheck()) {
+          const data = {
+            name: saveDatas1["name"],
+            number: saveDatas1["number"],
+            email: newEmail,
+          };
+          dataList.push(data);
+
+          const detailElement3 = $(".data-list");
+
+          let html = "<div>";
+          for (let i = 0; i < dataList.length; i++) {
+            let className =
+              i % 2 === 0 ? "main-content-detail" : "main-content-detail bg";
+
+            html += `
+            <div class="${className}">
+              <span class="main-content-8">${i + 1}</span>
+              <span class="main-content-23">${dataList[i].name}</span>
+              <span class="main-content-23">${dataList[i].number}</span>
+              <span class="main-content-23">${dataList[i].email}</span>
+              <div class="main-content-23">
+                <button onclick="removeItem(${
+                  dataList[i].number
+                })" class="btn1">삭제</button>
+              </div>
+            </div>
+            `;
+          }
+          html += "</div>";
+          detailElement3.html(html);
+          const nameElement = $("#input-name");
+          const numElement = $("#input-number");
+          const emailElement = $("#input-email");
+          const selectedElement = $("#input-domain1");
+          const domainElement = $("#input-selected-domain1");
+
+          saveDatas1["name"] = "";
+          saveDatas1["number"] = "";
+          saveDatas1["email"] = "";
+          saveDatas1["domain1"] = "";
+          nameElement.val("");
+          numElement.val("");
+          emailElement.val("");
+          selectedElement.val("");
+          domainElement.val("");
+          domainElement.attr("disabled", true);
+          domainElement.css("background-color", "#3f3f3f");
+          domainElement.css("color", "#676767");
+        } else {
+          return alert("모두 선택해 주세요!");
+        }
+      };
+
+      const saveData2 = () => {
+        console.log(saveDatas2);
+      };
+
+      const removeItem = (num) => {
+        dataList = dataList.filter((V) => String(num) !== V.number);
+        const detailElement3 = $(".data-list");
+        let html = "<div>";
+        for (let i = 0; i < dataList.length; i++) {
+          let className =
+            i % 2 === 0 ? "main-content-detail" : "main-content-detail bg";
+
+          html += `
+            <div class="${className}">
+              <span class="main-content-8">${i + 1}</span>
+              <span class="main-content-23">${dataList[i].name}</span>
+              <span class="main-content-23">${dataList[i].number}</span>
+              <span class="main-content-23">${dataList[i].email}</span>
+              <div class="main-content-23">
+                <button onclick="removeItem(${
+                  dataList[i].number
+                })" class="btn1">삭제</button>
+              </div>
+            </div>
+            `;
+        }
+        html += "</div>";
+        detailElement3.html(html);
+      };
+
+      let check = false;
+      const handleModal = () => {
+        check = !check;
+        const modalContainerElement = $(".modal-container");
+        const modalElement = $(".modal");
+        const mainElement = $();
+        if (check) {
+          modalContainerElement.fadeIn(700);
+          modalElement.fadeIn(700);
+          modalElement.html(
+            `
+        <div class="modal-content-container">
+          <div class="modal-title-wrapper">
+            <span class="modal-title">비밀번호 변경</span><br/>
+            <span class="modal-title2">정보보호를 위해 비밀번호는 주기적으로 변경해 주세요.</span>
+          </div>
+          <div class="modal-input-wrapper">
+            <div class="modal-input-wrapper2">
+              <span class="modal-input-label">현재 비밀번호</span>
+              <input id="password" placeholder="사용중인 비밀번호를 입력해 주세요." onkeyup="savePassword('password')" type="password" class="modal-input"/>
+            </div>
+            <div class="modal-input-wrapper2">
+              <span class="modal-input-label">새로운 비밀번호</span>
+              <input id="newPassword" placeholder="새로운 비밀번호를 입력해 주세요." onkeyup="savePassword('newPassword')" type="password" class="modal-input"/>
+            </div>
+            <div class="modal-input-wrapper2">
+              <span class="modal-input-label">새로운 비밀번호 확인</span>
+              <input id="newPasswordCheck" placeholder="새로운 비밀번호를 재 입력해 주세요." onkeyup="savePassword('newPasswordCheck')" type="password" class="modal-input"/>
+            </div>
+            <div class="modal-input-wrapper2">
+              <span class="modal-input-label" style="color: #666;">비밀번호는 영문(대소문자 구분)+숫자+특수문자 <span style="color: red">! @ # $ % ^ & * ( )</span> 조합으로8자 이상 15자 이하로 작성</span>
+            </div>
+          </div>
+          <div class="modal-btn-wrapper">
+            <button onclick="changePassword()" class="modal-change-password">비밀번호 변경</button>
+            <button onclick="handleModal()" class="modal-close-modal">취소</button>
+          </div>
+        </div>
+      `
+          );
+        } else {
+          modalContainerElement.fadeOut(700);
+          modalElement.fadeOut(700);
+        }
+      };
+
+      const passwordData = {
+        password: "",
+        newPassword: "",
+        newPasswordCheck: "",
+      };
+
+      const savePassword = (pass) => {
+        passwordData[pass] = $(`#${pass}`).val();
+      };
+
+      const validatePassword = (password) => {
+        var regex =
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()])[A-Za-z\d!@#$%^&*()]{8,15}$/;
+
+        return regex.test(password);
+      };
+
+      const changePassword = () => {
+        alert(passwordData["password"]);
+        console.log(validatePassword(passwordData[password]));
+      };
+    </script>
+  </body>
+</html>

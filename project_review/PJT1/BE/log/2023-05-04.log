@@ -1,0 +1,138 @@
+5/4/2023, 11:01:29 AM info {"ID":"test","NAME":"moon","PASS":"test"}
+5/4/2023, 11:01:58 AM info {"ID":"test","NAME":"moon","PASS":"test"}
+5/4/2023, 11:04:13 AM info {"ID":"test","NAME":"moon","PASS":"test"}
+5/4/2023, 11:04:13 AM info signUp >> okisbacon
+5/4/2023, 11:04:37 AM info {"ID":"test","NAME":"test","PASS":"test"}
+5/4/2023, 11:04:37 AM info signUp >> okisbacon
+5/4/2023, 11:06:53 AM info {"ID":"test","NAME":"test","PASS":"test"}
+5/4/2023, 11:06:53 AM info signUp >> Name duplicated
+5/4/2023, 11:08:46 AM info {"ID":"test","NAME":"test","PASS":"test"}
+5/4/2023, 11:08:46 AM info signUp >> Name duplicated
+5/4/2023, 11:09:14 AM info {"ID":"test","NAME":"test","PASS":"test"}
+5/4/2023, 11:09:14 AM info signUp >> Name duplicated
+5/4/2023, 11:18:52 AM info {"ID":"test","NAME":"test","PASS":"test"}
+5/4/2023, 11:18:52 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:19:04 AM info {"ID":"tedst","NAME":"test","PASS":"test"}
+5/4/2023, 11:19:04 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:19:10 AM info {"ID":"test","NAME":"testt","PASS":"test"}
+5/4/2023, 11:19:10 AM info signUp >> okisbacon
+5/4/2023, 11:19:59 AM info {"ID":"test","NAME":"testtt","PASS":"test"}
+5/4/2023, 11:19:59 AM info signUp >> okisbacon
+5/4/2023, 11:23:20 AM info {"ID":"test","NAME":"testtt","PASS":"test"}
+5/4/2023, 11:23:20 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:27:30 AM info {"ID":"123","NAME":"testtt","PASS":"test"}
+5/4/2023, 11:27:30 AM info signUp >> okisbacon
+5/4/2023, 11:31:18 AM info {"ID":"zsec2","NAME":"1q1q","PASS":"1q1q1q1q!"}
+5/4/2023, 11:31:18 AM info signUp >> okisbacon
+5/4/2023, 11:31:49 AM info {"ID":"zsec2","NAME":"1q1q","PASS":"1q1q1q1q!"}
+5/4/2023, 11:31:49 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:34:57 AM info {"ID":"zsecq2","NAME":"라면","PASS":"wndrnjs1@"}
+5/4/2023, 11:34:57 AM info signUp >> okisbacon
+5/4/2023, 11:34:58 AM info {"ID":"zsecq2","NAME":"라면","PASS":"wndrnjs1@"}
+5/4/2023, 11:34:58 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:37:35 AM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 11:37:35 AM info login >> okisbacon
+5/4/2023, 11:41:11 AM info {"ID":"zsecq2","PASS":"wndrnjs1!!"}
+5/4/2023, 11:41:11 AM info login >> PW incorrect
+5/4/2023, 11:41:29 AM info {"ID":"zsecq2","PASS":"wndrnjs1!!"}
+5/4/2023, 11:41:29 AM info login >> PW incorrect
+5/4/2023, 11:41:32 AM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 11:41:32 AM info login >> okisbacon
+5/4/2023, 11:42:56 AM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 11:42:56 AM info login >> okisbacon
+5/4/2023, 11:43:14 AM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 11:43:14 AM info login >> okisbacon
+5/4/2023, 11:43:57 AM info {"ID":"zsecq2","PASS":"wndrnjs1!"}
+5/4/2023, 11:43:57 AM info login >> PW incorrect
+5/4/2023, 11:44:00 AM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 11:44:00 AM info login >> okisbacon
+5/4/2023, 11:55:38 AM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 11:55:38 AM info login >> okisbacon
+5/4/2023, 11:55:55 AM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 11:55:55 AM info login >> okisbacon
+5/4/2023, 11:56:59 AM info {"ID":"zsecq2","NAME":"라면","PASS":"wndrnjs1@"}
+5/4/2023, 11:56:59 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:57:18 AM info {"ID":"zsecq2","NAME":"라면","PASS":"wndrnjs1@"}
+5/4/2023, 11:57:18 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:57:25 AM info {"ID":"zsecq2","NAME":"라면","PASS":"wndrnjs1@"}
+5/4/2023, 11:57:25 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:57:40 AM info {"ID":"zsecq2","NAME":"라면","PASS":"wndrnjs1@"}
+5/4/2023, 11:57:40 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:58:11 AM info {"ID":"zsecq2","NAME":"라면","PASS":"wndrnjs1@"}
+5/4/2023, 11:58:11 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:58:33 AM info {"ID":"zsecq2","NAME":"라면","PASS":"wndrnjs1@"}
+5/4/2023, 11:58:33 AM info signUp >> ID Or Name duplicated
+5/4/2023, 11:59:30 AM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 11:59:30 AM info login >> okisbacon
+5/4/2023, 12:03:13 PM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 12:03:13 PM info login >> okisbacon
+5/4/2023, 12:04:20 PM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 12:04:20 PM info login >> okisbacon
+5/4/2023, 12:05:45 PM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 12:05:45 PM info login >> okisbacon
+5/4/2023, 12:06:01 PM info {"ID":"zsecq3","PASS":"wndrnjs1@"}
+5/4/2023, 12:06:01 PM info login >> ID does not exist
+5/4/2023, 12:06:21 PM info {"ID":"test1","NAME":"테스트","PASS":"qweqweqwe1@"}
+5/4/2023, 12:06:21 PM info signUp >> okisbacon
+5/4/2023, 12:09:56 PM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 12:09:56 PM info login >> okisbacon
+5/4/2023, 12:10:25 PM info {"ID":"test2","NAME":"test2","PASS":"1q1q1q1q!"}
+5/4/2023, 12:10:25 PM info signUp >> okisbacon
+5/4/2023, 1:15:09 PM info {"ID":"test3","NAME":"test3","PASS":"1q1q1q1q!"}
+5/4/2023, 1:15:09 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:15:25 PM info {"ID":"test3","PASS":"1q1q1q1q!"}
+5/4/2023, 1:15:25 PM info login >> okisbacon
+5/4/2023, 1:40:37 PM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 1:40:37 PM info login >> okisbacon
+5/4/2023, 1:46:20 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:46:20 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:46:40 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:46:40 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:47:36 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:47:36 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:48:03 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:48:03 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:48:18 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:48:18 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:48:24 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:48:24 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:48:32 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:48:32 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:49:24 PM info {"ID":"test5","NAME":"test5","PASS":"1q1q1q1q!"}
+5/4/2023, 1:49:25 PM info signUp >> okisbacon
+5/4/2023, 1:51:03 PM info {"ID":"test4","NAME":"test4","PASS":"1q1q1q1q!"}
+5/4/2023, 1:51:03 PM info signUp >> okisbacon
+5/4/2023, 1:51:30 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:51:30 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:52:00 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:52:00 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:52:27 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:52:28 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:52:32 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:52:33 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:52:38 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 1:52:39 PM info signUp >> ID Or Name duplicated
+5/4/2023, 1:55:30 PM info {"ID":"zsecq2","PASS":"wndrnjs1@"}
+5/4/2023, 1:55:30 PM info login >> okisbacon
+5/4/2023, 2:01:25 PM info {"ID":"test1","NAME":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 2:01:25 PM info signUp >> okisbacon
+5/4/2023, 2:02:55 PM info {"ID":"test2","NAME":"test2","PASS":"1q1q1q1q!"}
+5/4/2023, 2:02:55 PM info signUp >> okisbacon
+5/4/2023, 2:03:24 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 2:03:24 PM info login >> okisbacon
+5/4/2023, 2:43:40 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 2:43:40 PM info login >> okisbacon
+5/4/2023, 2:56:56 PM info {"ID":"test2","NAME":"test용","PASS":"1q1q1q1q!"}
+5/4/2023, 2:56:56 PM info signUp >> ID Or Name duplicated
+5/4/2023, 2:57:10 PM info {"ID":"test3","NAME":"test용","PASS":"1q1q1q1q!"}
+5/4/2023, 2:57:10 PM info signUp >> okisbacon
+5/4/2023, 3:56:50 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 3:56:50 PM info login >> okisbacon
+5/4/2023, 3:57:46 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 3:57:46 PM info login >> okisbacon
+5/4/2023, 4:01:59 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 4:01:59 PM info login >> okisbacon
+5/4/2023, 4:54:08 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 4:54:08 PM info login >> okisbacon
+5/4/2023, 5:28:31 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/4/2023, 5:28:31 PM info login >> okisbacon

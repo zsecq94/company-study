@@ -1,0 +1,42 @@
+5/6/2023, 7:13:11 PM info {"ID":"test2","PASS":"1q1q1q1q!"}
+5/6/2023, 7:13:11 PM info login >> okisbacon
+5/6/2023, 7:18:50 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/6/2023, 7:18:50 PM info login >> okisbacon
+5/6/2023, 7:22:21 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/6/2023, 7:22:21 PM info login >> okisbacon
+5/6/2023, 7:38:28 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/6/2023, 7:38:29 PM info login >> okisbacon
+5/6/2023, 7:44:50 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/6/2023, 7:44:50 PM info login >> okisbacon
+5/6/2023, 7:47:14 PM info {"ID":"test2","PASS":"1q1q1q1q!"}
+5/6/2023, 7:47:14 PM info login >> okisbacon
+5/6/2023, 7:48:40 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/6/2023, 7:48:40 PM info login >> okisbacon
+5/6/2023, 7:50:03 PM info {"ID":"test3","NAME":"라면장인","PASS":"1q1q1q1q!"}
+5/6/2023, 7:50:03 PM info signUp >> ID Or Name duplicated
+5/6/2023, 7:50:09 PM info {"ID":"test4","NAME":"라면장인","PASS":"1q1q1q1q!"}
+5/6/2023, 7:50:09 PM info signUp >> okisbacon
+5/6/2023, 7:50:24 PM info {"ID":"test3","PASS":"1q1q1q1q!"}
+5/6/2023, 7:50:24 PM info login >> okisbacon
+5/6/2023, 7:52:18 PM info {"ID":"test2","PASS":"1q1q1q1q!"}
+5/6/2023, 7:52:18 PM info login >> okisbacon
+5/6/2023, 7:52:25 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/6/2023, 7:52:25 PM info login >> okisbacon
+5/6/2023, 8:11:16 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/6/2023, 8:11:16 PM info login >> okisbacon
+5/6/2023, 8:15:59 PM info {"ID":"test2","PASS":"1q1q1q1q!"}
+5/6/2023, 8:15:59 PM info login >> okisbacon
+5/6/2023, 8:16:10 PM info {"ID":"test3","PASS":"1q1q1q1q!"}
+5/6/2023, 8:16:10 PM info login >> okisbacon
+5/6/2023, 8:16:22 PM info {"ID":"test2","PASS":"1q1q1q1q!"}
+5/6/2023, 8:16:22 PM info login >> okisbacon
+5/6/2023, 8:52:24 PM info {"ID":"test3","PASS":"1q1q1q1q!"}
+5/6/2023, 8:52:24 PM info login >> okisbacon
+5/6/2023, 8:52:40 PM info {"ID":"test5","PASS":"1q1q1q1q!"}
+5/6/2023, 8:52:40 PM info login >> ID does not exist
+5/6/2023, 8:52:42 PM info {"ID":"test4","PASS":"1q1q1q1q!"}
+5/6/2023, 8:52:42 PM info login >> okisbacon
+5/6/2023, 8:53:00 PM info {"ID":"test3","PASS":"1q1q1q1q!"}
+5/6/2023, 8:53:00 PM info login >> okisbacon
+5/6/2023, 9:28:45 PM info {"ID":"test1","PASS":"1q1q1q1q!"}
+5/6/2023, 9:28:45 PM info login >> okisbacon
