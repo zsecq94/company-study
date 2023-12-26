@@ -12,21 +12,98 @@
     <script>
       $(document).ready(() => {
         let lang = "KR";
-        $(".header-wrapper").hover(
+        let $krBtn = $(".kr");
+        let $enBtn = $(".en");
+
+        const updateStyle = (state) => {
+          const imgSrc = state ? "./images/logo_color.png" : "./images/logo_black.png";
+          const menuSpan = state ? "black" : "white";
+          const langImg = state ? "./images/lang_icon2.png" : "./images/lang_icon.png";
+          const langBtnBox = state ? "solid 1px #999999" : "solid 1px white";
+          const hrColor = state ? "#999999" : "rgba(255, 255, 255, 0.5)";
+          const langSpan = (val) => {
+            if (state) {
+              if (lang === val) {
+                return "black";
+              } else {
+                return "#999999";
+              }
+            } else {
+              if (lang === val) {
+                return "white";
+              } else {
+                return "rgba(255, 255, 255, 0.5)";
+              }
+            }
+          };
+
+          $(".header-logo img").attr("src", imgSrc);
+          $(".header-menu").css("color", menuSpan);
+          $(".lang-btn-box img").attr("src", langImg);
+          $(".lang-btn-box").css("border", langBtnBox);
+          $krBtn.css("color", langSpan("KR"));
+          $enBtn.css("color", langSpan("EN"));
+          $(".hr").css("color", hrColor);
+        };
+        $(".header-con").hover(
           () => {
-            $(".header-logo img").attr("src", "./images/logo_color.png");
-            $(".header-menu").css("color", "black");
+            updateStyle(true);
           },
           () => {
-            $(".header-logo img").attr("src", "./images/logo_black.png");
-            $(".header-menu").css("color", "white");
+            updateStyle(false);
           }
         );
+        $krBtn.click(() => {
+          lang = "KR";
+          updateStyle(true);
+        });
+        $enBtn.click(() => {
+          lang = "EN";
+          updateStyle(true);
+        });
+        updateStyle(false);
+
+        let stateCheck = true;
+
+        const updateMbStyle = (state) => {
+          const bgColor = state ? "white" : "transparent";
+          const displayStyle = state ? "flex" : "none";
+          const langSpanColor = state ? "black" : "white";
+          const langBorder = state ? "solid 1px #eeeeee" : "solid 1px white";
+
+          const logoSrc = state ? "./images/logo_color.png" : "./images/logo_black.png";
+          const menuIconSrc = state ? "./images/close_icon.png" : "./images/menu_icon.png";
+          const langIconSrc = state ? "./images/lang_icon2.png" : "./images/lang_icon.png";
+
+          $(".mb-menu").css("display", displayStyle);
+          $(".mb-menu-icon").attr("src", menuIconSrc);
+          $(".mb-logo").attr("src", logoSrc);
+          $(".mb-header-con").css("backgroundColor", bgColor);
+          $(".mb-lang-box img").attr("src", langIconSrc);
+          $(".mb-lang-box span").css("color", langSpanColor);
+          $(".mb-lang-box").css("border", langBorder);
+        };
+
+        $(".mb-menu-icon").click(() => {
+          updateMbStyle(stateCheck);
+          stateCheck = !stateCheck;
+        });
+
+        $(".mb-menu-title img").click(function () {
+          let imgSrc = $(this).attr("src");
+
+          if (imgSrc === "./images/down_icon.png") {
+            $(this).attr("src", "./images/up_icon.png");
+          } else {
+            $(this).attr("src", "./images/down_icon.png");
+          }
+          $(this).parent().next().slideToggle();
+        });
       });
     </script>
   </head>
   <body>
-    <div class="slide-wrapper">
+    <div class="slide-con">
       <div class="slide">
         <div class="slider">
           <img src="./images/bg1.png" />
@@ -70,11 +147,11 @@
           </div>
         </div>
       </div>
-      <div class="slide-bottom-wrapper">
+      <div class="slide-bottom-con">
         <div class="slide-bottom">
-          <div class="slide-time-wrapper">
+          <div class="slide-time-box">
             <div class="slide-number-text"></div>
-            <div class="timebar-wrapper">
+            <div class="timebar-box">
               <div class="timebar"></div>
             </div>
             <div class="slide-number-text2"><span>05</span></div>
@@ -85,7 +162,7 @@
           </div>
         </div>
       </div>
-      <div class="header-wrapper">
+      <div class="header-con">
         <div class="header-logo">
           <img src="./images/logo_black.png" alt="" />
         </div>
@@ -96,16 +173,92 @@
           <span>IR</span>
           <span>PR</span>
         </div>
-        <div class="lang-btn-wrapper">
-          <div class="lang-btn">
-            <span>KR</span>
-            <span>|</span>
-            <span>EN</span>
+        <div class="lang-btn-con">
+          <div class="lang-btn-box">
+            <span class="kr">KR</span>
+            <span class="hr">|</span>
+            <span class="en">EN</span>
             <img src="./images/lang_icon.png" alt="" />
           </div>
         </div>
       </div>
+      <div class="mb-header-con">
+        <img class="mb-logo" src="./images/logo_black.png" alt="" />
+        <div class="mb-header-right-box">
+          <div class="mb-lang-box">
+            <span>KR</span>
+            <img src="./images/lang_icon.png" alt="" />
+          </div>
+          <img class="mb-menu-icon" src="./images/menu_icon.png" alt="" />
+        </div>
+      </div>
+      <div class="mb-menu">
+        <div class="intro-box">
+          <div class="mb-menu-title">
+            <h2>회사소개</h2>
+            <img src="./images/down_icon.png" alt="" />
+          </div>
+          <div class="intro-menu mb-menu-base" style="display: none">
+            <span>인사말</span>
+            <span>연혁</span>
+            <span>인증내역</span>
+            <span>수상내역</span>
+            <span>MEMBER</span>
+            <span>찾아오시는 방법</span>
+          </div>
+        </div>
+        <div class="bsns-box">
+          <div class="mb-menu-title">
+            <h2>비즈니스 분야</h2>
+            <img src="./images/down_icon.png" alt="" />
+          </div>
+          <div class="bsns-menu mb-menu-base" style="display: none">
+            <span>재생에너지 발전</span>
+            <span>VPP(가상발전소)</span>
+            <span>ESS(에너지저장시스템)</span>
+            <span>Power to Vehicle(P2V)</span>
+            <span>DR(Demand Response)</span>
+            <span>Fintech</span>
+          </div>
+        </div>
+        <div class="skills-box">
+          <div class="mb-menu-title">
+            <h2>보유기술</h2>
+            <img src="./images/down_icon.png" alt="" />
+          </div>
+          <div class="skills-menu mb-menu-base" style="display: none">
+            <span>AI 빅데이터센터</span>
+            <span>기술 특허 현황</span>
+            <span>기업부설연구소 R&D실적</span>
+            <span>시험성적</span>
+          </div>
+        </div>
+        <div class="ir-box">
+          <div class="mb-menu-title">
+            <h2>IR</h2>
+            <img src="./images/down_icon.png" alt="" />
+          </div>
+          <div class="ir-menu mb-menu-base" style="display: none">
+            <span>공지사항</span>
+            <span>기업정보(IR)</span>
+            <span>투자하기</span>
+          </div>
+        </div>
+        <div class="pr-box">
+          <div class="mb-menu-title">
+            <h2>PR</h2>
+            <img src="./images/down_icon.png" alt="" />
+          </div>
+          <div class="pr-menu mb-menu-base" style="display: none">
+            <span>NEWS</span>
+            <span>인사이트</span>
+            <span>시장동향</span>
+            <span>문의사항</span>
+            <span>자료실</span>
+            <span>인재채용</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- <div class="hi" style="height: 100vh"></div> -->
   </body>
 </html>
