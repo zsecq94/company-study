@@ -14,13 +14,34 @@
         let lang = "KR";
         let $krBtn = $(".kr");
         let $enBtn = $(".en");
+        let scrollCheck = false;
 
         const updateStyle = (state) => {
-          const imgSrc = state ? "./images/logo_color.png" : "./images/logo_black.png";
-          const menuSpan = state ? "black" : "white";
+          const logoImg = state ? "./images/logo_color.png" : "./images/logo_black.png";
           const langImg = state ? "./images/lang_icon2.png" : "./images/lang_icon.png";
-          const langBtnBox = state ? "solid 1px #999999" : "solid 1px white";
           const hrColor = state ? "#999999" : "rgba(255, 255, 255, 0.5)";
+          const headerMenuColor = state ? "black" : "white";
+          const langBtnBorder = state ? "solid 1px #999999" : "solid 1px white";
+          const headerBorderBot = state ? "solid 1px #999999" : "solid 1px transparent";
+          const menuImg = state ? "./images/menu_black.png" : "./images/menu_color.png";
+
+          let headerConBgColor;
+
+          let windowWidth = $(window).width();
+          if (windowWidth < 1007) {
+            if (state) {
+              headerConBgColor = "rgba(255, 255, 255, 0.9)";
+            } else {
+              headerConBgColor = "transparent";
+            }
+          } else {
+            if (state) {
+              headerConBgColor = "white";
+            } else {
+              headerConBgColor = "transparent";
+            }
+          }
+
           const langSpan = (val) => {
             if (state) {
               if (lang === val) {
@@ -37,22 +58,39 @@
             }
           };
 
-          $(".header-logo img").attr("src", imgSrc);
-          $(".header-menu").css("color", menuSpan);
+          $(".header-con").css("borderBottom", headerBorderBot);
+          $(".header-con").css("backgroundColor", headerConBgColor);
+          $(".header-logo img").attr("src", logoImg);
+          $(".header-menu").css("color", headerMenuColor);
           $(".lang-btn-box img").attr("src", langImg);
-          $(".lang-btn-box").css("border", langBtnBox);
+          $(".lang-btn-box").css("border", langBtnBorder);
           $krBtn.css("color", langSpan("KR"));
           $enBtn.css("color", langSpan("EN"));
           $(".hr").css("color", hrColor);
+          $(".menu-btn img").attr("src", menuImg);
         };
+
         $(".header-con").hover(
           () => {
-            updateStyle(true);
+            if (!scrollCheck) {
+              updateStyle(true);
+            }
           },
           () => {
-            updateStyle(false);
+            if (!scrollCheck) {
+              updateStyle(false);
+            }
+            $(".header-sub-menu-con").slideUp();
           }
         );
+
+        $(".header-menu").hover(
+          () => {
+            $(".header-sub-menu-con").slideDown().css("display", "grid");
+          },
+          () => {}
+        );
+
         $krBtn.click(() => {
           lang = "KR";
           updateStyle(true);
@@ -61,44 +99,18 @@
           lang = "EN";
           updateStyle(true);
         });
-        updateStyle(false);
 
-        let stateCheck = true;
-
-        const updateMbStyle = (state) => {
-          const bgColor = state ? "white" : "transparent";
-          const displayStyle = state ? "flex" : "none";
-          const langSpanColor = state ? "black" : "white";
-          const langBorder = state ? "solid 1px #eeeeee" : "solid 1px white";
-
-          const logoSrc = state ? "./images/logo_color.png" : "./images/logo_black.png";
-          const menuIconSrc = state ? "./images/close_icon.png" : "./images/menu_icon.png";
-          const langIconSrc = state ? "./images/lang_icon2.png" : "./images/lang_icon.png";
-
-          $(".mb-menu").css("display", displayStyle);
-          $(".mb-menu-icon").attr("src", menuIconSrc);
-          $(".mb-logo").attr("src", logoSrc);
-          $(".mb-header-con").css("backgroundColor", bgColor);
-          $(".mb-lang-box img").attr("src", langIconSrc);
-          $(".mb-lang-box span").css("color", langSpanColor);
-          $(".mb-lang-box").css("border", langBorder);
-        };
-
-        $(".mb-menu-icon").click(() => {
-          updateMbStyle(stateCheck);
-          stateCheck = !stateCheck;
-        });
-
-        $(".mb-menu-title img").click(function () {
-          let imgSrc = $(this).attr("src");
-
-          if (imgSrc === "./images/down_icon.png") {
-            $(this).attr("src", "./images/up_icon.png");
+        $(window).scroll(() => {
+          if (scrollY > 120) {
+            scrollCheck = true;
+            updateStyle(true);
           } else {
-            $(this).attr("src", "./images/down_icon.png");
+            scrollCheck = false;
+            updateStyle(false);
           }
-          $(this).parent().next().slideToggle();
         });
+
+        updateStyle(false);
       });
     </script>
   </head>
@@ -173,92 +185,62 @@
           <span>IR</span>
           <span>PR</span>
         </div>
-        <div class="lang-btn-con">
-          <div class="lang-btn-box">
-            <span class="kr">KR</span>
-            <span class="hr">|</span>
-            <span class="en">EN</span>
-            <img src="./images/lang_icon.png" alt="" />
+        <div class="header-sub-menu-con">
+          <div></div>
+          <div class="header-sub-menu-box">
+            <div class="header-sub-menu">
+              <a href="#">인사말</a>
+              <a href="#">연혁</a>
+              <a href="#">인증내역</a>
+              <a href="#">수상내역</a>
+              <a href="#">MEMBER</a>
+              <a href="#">찾아오시는 방법</a>
+            </div>
+            <div class="header-sub-menu">
+              <a href="#">재생에너지 발전</a>
+              <a href="#">VPP(가상발전소)</a>
+              <a href="#">ESS(에너지저장시스템)</a>
+              <a href="#">Power to Vehicle(P2V)</a>
+              <a href="#">DR(Demand Response)</a>
+              <a href="#">Fintech</a>
+            </div>
+            <div class="header-sub-menu">
+              <a href="#">AI 빅데이터센터</a>
+              <a href="#">기술 특허 현황</a>
+              <a href="#">기업부설연구소 R&D실적</a>
+              <a href="#">시험성적</a>
+            </div>
+            <div class="header-sub-menu">
+              <a href="#">공지사항</a>
+              <a href="#">기업정보(IR)</a>
+              <a href="#">투자하기</a>
+            </div>
+            <div class="header-sub-menu">
+              <a href="#">NEWS</a>
+              <a href="#">인사이트</a>
+              <a href="#">시장동향</a>
+              <a href="#">문의사항</a>
+              <a href="#">자료실</a>
+              <a href="#">인재채용</a>
+            </div>
           </div>
+          <div></div>
         </div>
-      </div>
-      <div class="mb-header-con">
-        <img class="mb-logo" src="./images/logo_black.png" alt="" />
-        <div class="mb-header-right-box">
-          <div class="mb-lang-box">
-            <span>KR</span>
-            <img src="./images/lang_icon.png" alt="" />
+        <div class="mb-header-right-con">
+          <div class="lang-btn-con">
+            <div class="lang-btn-box">
+              <span class="kr">KR</span>
+              <span class="hr">|</span>
+              <span class="en">EN</span>
+              <img src="./images/lang_icon.png" alt="" />
+            </div>
           </div>
-          <img class="mb-menu-icon" src="./images/menu_icon.png" alt="" />
-        </div>
-      </div>
-      <div class="mb-menu">
-        <div class="intro-box">
-          <div class="mb-menu-title">
-            <h2>회사소개</h2>
-            <img src="./images/down_icon.png" alt="" />
-          </div>
-          <div class="intro-menu mb-menu-base" style="display: none">
-            <span>인사말</span>
-            <span>연혁</span>
-            <span>인증내역</span>
-            <span>수상내역</span>
-            <span>MEMBER</span>
-            <span>찾아오시는 방법</span>
-          </div>
-        </div>
-        <div class="bsns-box">
-          <div class="mb-menu-title">
-            <h2>비즈니스 분야</h2>
-            <img src="./images/down_icon.png" alt="" />
-          </div>
-          <div class="bsns-menu mb-menu-base" style="display: none">
-            <span>재생에너지 발전</span>
-            <span>VPP(가상발전소)</span>
-            <span>ESS(에너지저장시스템)</span>
-            <span>Power to Vehicle(P2V)</span>
-            <span>DR(Demand Response)</span>
-            <span>Fintech</span>
-          </div>
-        </div>
-        <div class="skills-box">
-          <div class="mb-menu-title">
-            <h2>보유기술</h2>
-            <img src="./images/down_icon.png" alt="" />
-          </div>
-          <div class="skills-menu mb-menu-base" style="display: none">
-            <span>AI 빅데이터센터</span>
-            <span>기술 특허 현황</span>
-            <span>기업부설연구소 R&D실적</span>
-            <span>시험성적</span>
-          </div>
-        </div>
-        <div class="ir-box">
-          <div class="mb-menu-title">
-            <h2>IR</h2>
-            <img src="./images/down_icon.png" alt="" />
-          </div>
-          <div class="ir-menu mb-menu-base" style="display: none">
-            <span>공지사항</span>
-            <span>기업정보(IR)</span>
-            <span>투자하기</span>
-          </div>
-        </div>
-        <div class="pr-box">
-          <div class="mb-menu-title">
-            <h2>PR</h2>
-            <img src="./images/down_icon.png" alt="" />
-          </div>
-          <div class="pr-menu mb-menu-base" style="display: none">
-            <span>NEWS</span>
-            <span>인사이트</span>
-            <span>시장동향</span>
-            <span>문의사항</span>
-            <span>자료실</span>
-            <span>인재채용</span>
+          <div class="menu-btn">
+            <img src="./images/menu_color.png" alt="" />
           </div>
         </div>
       </div>
     </div>
+    <div style="height: 100vh"></div>
   </body>
 </html>
