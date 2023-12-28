@@ -12,17 +12,17 @@
     <script>
       $(document).ready(() => {
         let lang = "KR";
-        let $krBtn = $(".kr");
-        let $enBtn = $(".en");
+        let $krBtn = $(".header__language-button--kr");
+        let $enBtn = $(".header__language-button--en");
         let scrollCheck = false;
 
-        const updateStyle = (state) => {
+        const updateHeaderStyle = (state) => {
           const logoImg = state ? "./images/logo_color.png" : "./images/logo_black.png";
           const langImg = state ? "./images/lang_icon2.png" : "./images/lang_icon.png";
           const hrColor = state ? "#999999" : "rgba(255, 255, 255, 0.5)";
           const headerMenuColor = state ? "black" : "white";
           const langBtnBorder = state ? "solid 1px #999999" : "solid 1px white";
-          const headerBorderBot = state ? "solid 1px #999999" : "solid 1px transparent";
+          let headerBorderBot;
           const menuImg = state ? "./images/menu_black.png" : "./images/menu_color.png";
 
           let headerConBgColor;
@@ -37,8 +37,10 @@
           } else {
             if (state) {
               headerConBgColor = "white";
+              headerBorderBot = "solid 1px #999999";
             } else {
               headerConBgColor = "transparent";
+              headerBorderBot = "solid 1px transparent";
             }
           }
 
@@ -58,59 +60,69 @@
             }
           };
 
-          $(".header-con").css("borderBottom", headerBorderBot);
-          $(".header-con").css("backgroundColor", headerConBgColor);
-          $(".header-logo img").attr("src", logoImg);
-          $(".header-menu").css("color", headerMenuColor);
-          $(".lang-btn-box img").attr("src", langImg);
-          $(".lang-btn-box").css("border", langBtnBorder);
+          $(".header").css("borderBottom", headerBorderBot);
+          $(".header").css("backgroundColor", headerConBgColor);
+          $(".header__logo img").attr("src", logoImg);
+          $(".header__menu").css("color", headerMenuColor);
+          $(".header__language-button-box img").attr("src", langImg);
+          $(".header__language-button-box").css("border", langBtnBorder);
+          $(".header__language-button--hr").css("color", hrColor);
+          $(".menu__btn-con img").attr("src", menuImg);
           $krBtn.css("color", langSpan("KR"));
           $enBtn.css("color", langSpan("EN"));
-          $(".hr").css("color", hrColor);
-          $(".menu-btn img").attr("src", menuImg);
         };
 
-        $(".header-con").hover(
-          () => {
-            if (!scrollCheck) {
-              updateStyle(true);
-            }
-          },
-          () => {
-            if (!scrollCheck) {
-              updateStyle(false);
-            }
-            $(".header-sub-menu-con").slideUp();
-          }
-        );
+        $(".menu__btn-con img").click(() => {
+          console.log("클릭됨");
+        });
 
-        $(".header-menu").hover(
-          () => {
-            $(".header-sub-menu-con").slideDown().css("display", "grid");
-          },
-          () => {}
-        );
-
+        // 언어 버튼 클릭 이벤트 핸들러
         $krBtn.click(() => {
           lang = "KR";
-          updateStyle(true);
+          updateHeaderStyle(true);
         });
         $enBtn.click(() => {
           lang = "EN";
-          updateStyle(true);
+          updateHeaderStyle(true);
         });
 
+        // 스크롤 이벤트 핸들러
         $(window).scroll(() => {
           if (scrollY > 120) {
             scrollCheck = true;
-            updateStyle(true);
+            updateHeaderStyle(true);
           } else {
             scrollCheck = false;
-            updateStyle(false);
+            updateHeaderStyle(false);
           }
         });
 
-        updateStyle(false);
+        // 초기 스타일 업데이트
+        updateHeaderStyle(false);
+
+        // 헤더 마우스 오버시 로직
+        $(".header").hover(
+          () => {
+            if (!scrollCheck) {
+              updateHeaderStyle(true);
+            }
+          },
+          () => {
+            if (!scrollCheck) {
+              updateHeaderStyle(false);
+            }
+            $(".header__submenu-con").slideUp();
+          }
+        );
+
+        $(".header__menu, .header__submenu-con").hover(
+          () => {
+            $(".header__submenu-con").stop().slideDown().css("display", "grid");
+          },
+          () => {
+            $(".header__submenu-con").stop().slideUp();
+          }
+        );
       });
     </script>
   </head>
@@ -174,21 +186,21 @@
           </div>
         </div>
       </div>
-      <div class="header-con">
-        <div class="header-logo">
-          <img src="./images/logo_black.png" alt="" />
+      <header class="header">
+        <div class="header__logo">
+          <img src="./images/logo_black.png" alt="Company Logo" />
         </div>
-        <div class="header-menu">
-          <span>회사소개</span>
-          <span>비즈니스 분야</span>
-          <span>보유기술</span>
-          <span>IR</span>
-          <span>PR</span>
-        </div>
-        <div class="header-sub-menu-con">
+        <nav class="header__menu">
+          <span class="header__menu-item">회사소개</span>
+          <span class="header__menu-item">비즈니스 분야</span>
+          <span class="header__menu-item">보유기술</span>
+          <span class="header__menu-item">IR</span>
+          <span class="header__menu-item">PR</span>
+        </nav>
+        <div class="header__submenu-con">
           <div></div>
-          <div class="header-sub-menu-box">
-            <div class="header-sub-menu">
+          <div class="header__submenu-box">
+            <div class="header__submenu">
               <a href="#">인사말</a>
               <a href="#">연혁</a>
               <a href="#">인증내역</a>
@@ -196,7 +208,7 @@
               <a href="#">MEMBER</a>
               <a href="#">찾아오시는 방법</a>
             </div>
-            <div class="header-sub-menu">
+            <div class="header__submenu">
               <a href="#">재생에너지 발전</a>
               <a href="#">VPP(가상발전소)</a>
               <a href="#">ESS(에너지저장시스템)</a>
@@ -204,18 +216,18 @@
               <a href="#">DR(Demand Response)</a>
               <a href="#">Fintech</a>
             </div>
-            <div class="header-sub-menu">
+            <div class="header__submenu">
               <a href="#">AI 빅데이터센터</a>
               <a href="#">기술 특허 현황</a>
               <a href="#">기업부설연구소 R&D실적</a>
               <a href="#">시험성적</a>
             </div>
-            <div class="header-sub-menu">
+            <div class="header__submenu">
               <a href="#">공지사항</a>
               <a href="#">기업정보(IR)</a>
               <a href="#">투자하기</a>
             </div>
-            <div class="header-sub-menu">
+            <div class="header__submenu">
               <a href="#">NEWS</a>
               <a href="#">인사이트</a>
               <a href="#">시장동향</a>
@@ -226,20 +238,20 @@
           </div>
           <div></div>
         </div>
-        <div class="mb-header-right-con">
-          <div class="lang-btn-con">
-            <div class="lang-btn-box">
-              <span class="kr">KR</span>
-              <span class="hr">|</span>
-              <span class="en">EN</span>
-              <img src="./images/lang_icon.png" alt="" />
+        <div class="header__right-con">
+          <div class="header__language-button-con">
+            <div class="header__language-button-box">
+              <span class="header__language-button--kr">KR</span>
+              <span class="header__language-button--hr">|</span>
+              <span class="header__language-button--en">EN</span>
+              <img src="./images/lang_icon.png" alt="Language Icon" />
+            </div>
+            <div class="menu__btn-con">
+              <img src="./images/menu_color.png" alt="" />
             </div>
           </div>
-          <div class="menu-btn">
-            <img src="./images/menu_color.png" alt="" />
-          </div>
         </div>
-      </div>
+      </header>
     </div>
     <div style="height: 100vh"></div>
   </body>
