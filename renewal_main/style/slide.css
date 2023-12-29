@@ -1,56 +1,23 @@
-@font-face {
-  font-family: "Pretendard-Regular";
-  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-/* ###############자동정렬 방지###############*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video 
-/* ###############자동정렬방지###############*/ {
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-
-body {
-  font-family: "Pretendard-Regular", sans-serif;
-  overflow-x: hidden;
-  word-break: keep-all;
-}
-
 .slide-con {
+  box-sizing: border-box;
   position: relative;
-  overflow: hidden;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 }
 
-.slider {
+.slide__item {
   position: absolute;
   min-width: 1280px;
   width: 100%;
   height: 100%;
 }
 
-.slider img {
+.slide__item img {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
-.slide-text {
+.slide__text-box {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -62,25 +29,25 @@ body {
   width: 1280px;
 }
 
-.title {
+.text-box__title {
   font-size: 54px;
   font-weight: bold;
   width: 700px;
 }
 
-.sub {
+.text-box__sub {
   font-size: 20px;
   width: 700px;
 }
 
-.slide-bottom-con {
+.slide-nav-con {
   position: absolute;
   min-width: 1280px;
   width: 100%;
   height: 100%;
 }
 
-.slide-bottom {
+.nav-con__bot {
   position: absolute;
   display: flex;
   align-items: center;
@@ -90,80 +57,80 @@ body {
   min-width: 1280px;
 }
 
-.slide-time-box {
-  display: flex;
+.nav-con__time-box {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.timebar-box {
+.nav-con__timebar-box {
   background-color: rgba(255, 255, 255, 0.3);
   width: 300px;
 }
 
-.timebar {
+.timerbar-box__timebar {
   background: red;
   width: 0;
   height: 4px;
 }
 
-.slide-number-text {
+.nav-con__start {
   color: white;
   font-weight: bold;
   font-size: 18px;
 }
 
-.slide-number-text2 {
+.nav-con__end {
   color: rgba(255, 255, 255, 0.3);
   font-weight: bold;
   font-size: 18px;
 }
 
-.slide-icon {
+.slide-icon-box {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+
   margin-left: 20px;
-  gap: 20px;
+  gap: 10px;
 }
 
-.slide-icon img {
-  padding: 10px;
+.slide-icon-box img {
+  cursor: pointer;
+  padding: 20px;
   width: 10px;
   height: 16px;
 }
 
 @media all and (max-width: 1023px) {
-  .slider {
+  .slide__item {
     width: 100%;
     min-width: 100%;
   }
-  .slide-text {
+  .slide__text-box {
     gap: 0px;
     left: 50%;
     top: 30%;
     min-width: 100%;
     width: 100%;
   }
-  .title {
+  .text-box__title {
     font-size: 24px;
     padding: 20px 20px;
     width: 80%;
   }
-  .sub {
+  .text-box__sub {
     font-size: 14px;
     padding: 0px 20px;
     width: 80%;
   }
 
-  .slide-bottom-con {
+  .slide-nav-con {
     min-width: 100%;
     height: 100%;
   }
 
-  .slide-bottom {
+  .nav-con__bot {
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -173,27 +140,27 @@ body {
     min-width: 100%;
   }
 
-  .slide-time-box {
+  .nav-con__time-box {
     padding-left: 20px;
   }
 
-  .slide-icon {
+  .slide-icon-box {
     padding-right: 20px;
   }
 
-  .timebar-box {
+  .nav-con__timebar-box {
     width: 100px;
   }
 
-  .timebar {
+  .timerbar-box__timebar {
     height: 2px;
   }
 
-  .slide-number-text {
+  .nav-con__start {
     font-size: 14px;
   }
 
-  .slide-number-text2 {
+  .nav-con__end {
     font-size: 14px;
   }
 }
