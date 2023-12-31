@@ -30,15 +30,23 @@ header {
   font-weight: 600;
 }
 
+.header__sub-menu-box {
+  position: absolute;
+  box-sizing: border-box;
+  top: 100%;
+  width: 100vw;
+  height: 100px;
+  background-color: white;
+}
+
 .header__menu-sub {
-  display: flex;
+  display: none;
   flex-direction: column;
   top: 100px;
   padding: 40px 0px;
   gap: 16px;
   position: absolute;
   background-color: white;
-  /* width: 100%; */
 }
 
 .header__button-con {

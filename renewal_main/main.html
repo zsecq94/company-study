@@ -20,6 +20,28 @@
         } else {
           console.log("웹 화면");
         }
+        $(".header__menu-sub").each(function(index) {
+    // 현재 .header__menu-sub의 내용을 복사
+    var menuSubContent = $(this).html();
+
+    // 복사한 내용을 .header__sub-menu-box에 추가
+    var newElement = $("<div>").html(menuSubContent);
+    
+    // CSS 효과 적용
+    newElement.css({
+      "display": 'flex',
+      "flex-direction": "column",
+      "background-color": "#" + (index+1) + "f0f0f0",  // 배경색을 순차적으로 변경
+      "border": "1px solid #ccc",
+      "padding": "10px"
+    });
+
+    // 스타일이 적용된 요소를 .header__sub-menu-box에 추가
+    $(".header__sub-menu-box").append(newElement);
+  });
+
+  // 여러 CSS 효과 적용
+
       });
     </script>
   </head>
@@ -42,7 +64,7 @@
         </div>
         <div class="header__menu-box">
           <span class="header__menu-title">비즈니스 분야</span>
-          <div class="header__menu-sub">
+          <div class="header__menu-sub"> 
             <a href="#">재생에너지 발전</a>
             <a href="#">VPP(가상발전소)</a>
             <a href="#">ESS(에너지저장시스템)</a>
@@ -92,6 +114,8 @@
             <img src="./images/menu_color.png" alt="Menu Icon" />
           </div>
         </div>
+      </div>
+      <div class="header__sub-menu-box">
       </div>
     </header>
     <div class="slide-con">
