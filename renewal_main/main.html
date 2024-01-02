@@ -14,37 +14,35 @@
     <script src="./components/header.js"></script>
     <script>
       $(document).ready(() => {
-        $(".header__sub-menu").each(function () {
-          // 스타일이 적용된 요소를 .header__sub-menu-box에 추가
-          $(".header__sub-menu-box").append(
-            $("<div class='menu-box'>").html($(this).html())
-          );
-        });
-
+        let windowWidth = $(window).width();
         let lang = "KR";
         let $krBtn = $(".header__language-button--kr");
         let $enBtn = $(".header__language-button--en");
         let scrollCheck = false;
-        let mbMenuCheck = false;
+        let menuBtnCheck = false;
+        let webMenuOpenCheck = false;
+        let mbMenuOpenCheck = false;
 
-        const updateHeaderStyle = (state) => {
-          const logoImg = state
-            ? "./images/logo_color.png"
-            : "./images/logo_black.png";
-          const langImg = state
-            ? "./images/lang_icon2.png"
-            : "./images/lang_icon.png";
+        $(".header__sub-menu").each(function () {
+          $(".header__sub-menu-box").append($("<div class='menu-box'>").html($(this).html()));
+        });
+
+        $(window).resize(() => {
+          windowWidth = $(this).width();
+        });
+
+        const updateHeaderStyle = (state, device) => {
+          const logoImg = state ? "./images/logo_color.png" : "./images/logo_black.png";
+          const langImg = state ? "./images/lang_icon2.png" : "./images/lang_icon.png";
           const hrColor = state ? "#999999" : "rgba(255, 255, 255, 0.5)";
           const headerMenuColor = state ? "black" : "white";
           const langBtnBorder = state ? "solid 1px #999999" : "solid 1px white";
-          const menuImg = state
-            ? "./images/menu_black.png"
-            : "./images/menu_color.png";
-
+          const menuImg = state ? "./images/menu_black.png" : "./images/menu_color.png";
           let headerConBgColor;
 
-          let windowWidth = $(window).width();
-          if (windowWidth < 1007) {
+          if (device === "mb") {
+            headerConBgColor = "white";
+          } else if (windowWidth < 1007) {
             if (state) {
               headerConBgColor = "rgba(255, 255, 255, 0.9)";
             } else {
@@ -53,10 +51,8 @@
           } else {
             if (state) {
               headerConBgColor = "white";
-              headerBorderBot = "solid 1px #999999";
             } else {
               headerConBgColor = "transparent";
-              headerBorderBot = "solid 1px transparent";
             }
           }
 
@@ -76,23 +72,16 @@
             }
           };
 
-          $("header").css("borderBottom", headerBorderBot);
           $("header").css("backgroundColor", headerConBgColor);
-          $(".header__logo img").attr("src", logoImg);
           $(".header__menu-title").css("color", headerMenuColor);
-          $(".header__language-button-box img").attr("src", langImg);
           $(".header__language-button-box").css("border", langBtnBorder);
           $(".header__language-button--hr").css("color", hrColor);
+          $(".header__logo img").attr("src", logoImg);
+          $(".header__language-button-box img").attr("src", langImg);
+          $(".menu__btn-con img").attr("src", menuImg);
           $krBtn.css("color", langSpan("KR"));
           $enBtn.css("color", langSpan("EN"));
         };
-
-        const $windowWidth = $(window).width();
-        if ($windowWidth < 1007) {
-          console.log("모바일 화면");
-        } else {
-          console.log("웹 화면");
-        }
 
         // 언어 버튼 클릭 이벤트 핸들러
         $krBtn.click(() => {
@@ -106,6 +95,9 @@
 
         // 스크롤 이벤트 핸들러
         $(window).scroll(() => {
+          if (webMenuOpenCheck || mbMenuOpenCheck) {
+            return;
+          }
           if (scrollY > 120) {
             scrollCheck = true;
             updateHeaderStyle(true);
@@ -114,9 +106,6 @@
             updateHeaderStyle(false);
           }
         });
-
-        // 초기 스타일 업데이트
-        updateHeaderStyle(false);
 
         // 헤더 마우스 오버시 로직
         $("header").hover(
@@ -129,21 +118,31 @@
             if (!scrollCheck) {
               updateHeaderStyle(false);
             }
-            $(".header__sub-menu-con").slideUp();
           }
         );
 
         $(".header__menu-con, .header__sub-menu-con").hover(
           () => {
-            $(".header__sub-menu-con")
-              .stop()
-              .slideDown()
-              .css("display", "grid");
+            webMenuOpenCheck = true;
+            $(".header__sub-menu-con").stop().slideDown().css("display", "grid");
           },
           () => {
+            webMenuOpenCheck = false;
             $(".header__sub-menu-con").stop().slideUp();
           }
         );
+
+        $(".header__menu-title").hover(
+          function () {
+            $(this).css("color", "#f26933");
+          },
+          function () {
+            $(this).css("color", "black");
+          }
+        );
+
+        // 초기 스타일 업데이트
+        updateHeaderStyle(false);
       });
     </script>
   </head>
@@ -155,6 +154,7 @@
       <nav class="header__menu-con">
         <div class="header__menu-box">
           <span class="header__menu-title">회사소개</span>
+          <img src="./images/down_icon.png" alt="" />
           <div class="header__sub-menu">
             <a href="#">인사말</a>
             <a href="#">연혁</a>
@@ -166,6 +166,7 @@
         </div>
         <div class="header__menu-box">
           <span class="header__menu-title">비즈니스 분야</span>
+          <img src="./images/down_icon.png" alt="" />
           <div class="header__sub-menu">
             <a href="#">재생에너지 발전</a>
             <a href="#">VPP(가상발전소)</a>
@@ -177,6 +178,7 @@
         </div>
         <div class="header__menu-box">
           <span class="header__menu-title">보유기술</span>
+          <img src="./images/down_icon.png" alt="" />
           <div class="header__sub-menu">
             <a href="#">AI 빅데이터센터</a>
             <a href="#">기술 특허 현황</a>
@@ -186,6 +188,7 @@
         </div>
         <div class="header__menu-box">
           <span class="header__menu-title">IR</span>
+          <img src="./images/down_icon.png" alt="" />
           <div class="header__sub-menu">
             <a href="#">공지사항</a>
             <a href="#">기업정보(IR)</a>
@@ -194,6 +197,7 @@
         </div>
         <div class="header__menu-box">
           <span class="header__menu-title">PR</span>
+          <img src="./images/down_icon.png" alt="" />
           <div class="header__sub-menu">
             <a href="#">NEWS</a>
             <a href="#">인사이트</a>
@@ -229,23 +233,17 @@
           <img src="./images/bg1.png" />
           <div class="slide__text-box">
             <span class="text-box__title"
-              >렉스이노베이션의 첨단 정보통신 기술이 재생에너지의 스마트
-              그리드화를 이끌어 갑니다.</span
+              >렉스이노베이션의 첨단 정보통신 기술이 재생에너지의 스마트 그리드화를 이끌어 갑니다.</span
             >
-            <span class="text-box__sub"
-              >지속가능한 에너지 공급과 환경보호를 동시에 실현하는 기업</span
-            >
+            <span class="text-box__sub">지속가능한 에너지 공급과 환경보호를 동시에 실현하는 기업</span>
           </div>
         </div>
         <div class="slide__item">
           <img src="./images/bg2.png" />
           <div class="slide__text-box">
-            <span class="text-box__title"
-              >친환경 미래기술을 선도하는 REC’s INNOVATION</span
-            >
+            <span class="text-box__title">친환경 미래기술을 선도하는 REC’s INNOVATION</span>
             <span class="text-box__sub">
-              끊임없는 연구개발로 쌓아온 고도화된 기술력으로 더 나은 미래를 위한
-              솔루션을 제공합니다.
+              끊임없는 연구개발로 쌓아온 고도화된 기술력으로 더 나은 미래를 위한 솔루션을 제공합니다.
             </span>
           </div>
         </div>
@@ -253,37 +251,25 @@
           <img src="./images/bg3.png" />
           <div class="slide__text-box">
             <span class="text-box__title"
-              >청정 에너지로 우리의 미래를 밝혀나가는 길, 재생에너지의 힘과
-              혁신을 렉스이노베이션이 만들어갑니다.</span
+              >청정 에너지로 우리의 미래를 밝혀나가는 길, 재생에너지의 힘과 혁신을 렉스이노베이션이 만들어갑니다.</span
             >
-            <span class="text-box__sub"
-              >친환경 에너지를 통해 지구 환경을 보호하고 인류의 행복을 추구하는
-              기업</span
-            >
+            <span class="text-box__sub">친환경 에너지를 통해 지구 환경을 보호하고 인류의 행복을 추구하는 기업</span>
           </div>
         </div>
         <div class="slide__item">
           <img src="./images/bg4.png" />
           <div class="slide__text-box">
-            <span class="text-box__title"
-              >대한민국의 바다 환경을 이용한 육상양어장에 소수력발전소를
-              건설합니다.</span
-            >
-            <span class="text-box__sub"
-              >친환경 소수력발전소 100기 건설로 에너지자립을 선도하는 기업</span
-            >
+            <span class="text-box__title">대한민국의 바다 환경을 이용한 육상양어장에 소수력발전소를 건설합니다.</span>
+            <span class="text-box__sub">친환경 소수력발전소 100기 건설로 에너지자립을 선도하는 기업</span>
           </div>
         </div>
         <div class="slide__item">
           <img src="./images/bg5.png" />
           <div class="slide__text-box">
             <span class="text-box__title"
-              >녹색금융 플랫폼 렉스펀드가 기후위기로부터 대한민국의 탄소중립을
-              앞당기겠습니다.</span
+              >녹색금융 플랫폼 렉스펀드가 기후위기로부터 대한민국의 탄소중립을 앞당기겠습니다.</span
             >
-            <span class="text-box__sub"
-              >블록체인 기술을 활용한 Fintech 전문기업</span
-            >
+            <span class="text-box__sub">블록체인 기술을 활용한 Fintech 전문기업</span>
           </div>
         </div>
       </div>
