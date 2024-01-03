@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>렉스이노베이션</title>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
 
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="./style/slide.css" type="text/css" />
     <link rel="stylesheet" href="./style.css" type="text/css" />
     <link rel="stylesheet" href="./style/header.css" type="text/css" />
@@ -14,135 +14,154 @@
     <script src="./components/header.js"></script>
     <script>
       $(document).ready(() => {
-        let windowWidth = $(window).width();
-        let lang = "KR";
-        let $krBtn = $(".header__language-button--kr");
-        let $enBtn = $(".header__language-button--en");
-        let scrollCheck = false;
-        let menuBtnCheck = false;
-        let webMenuOpenCheck = false;
-        let mbMenuOpenCheck = false;
+        $(document).ready(() => {
+          let windowWidth = $(window).width();
+          let lang = "KR";
+          let $krBtn = $(".header__language-button--kr");
+          let $enBtn = $(".header__language-button--en");
+          let scrollCheck = false;
+          let menuBtnCheck = false;
+          let isMobile = windowWidth < 1007;
+          let webMenuOpenCheck = false;
+          let mbMenuOpenCheck = false;
 
-        $(".header__sub-menu").each(function () {
-          $(".header__sub-menu-box").append($("<div class='menu-box'>").html($(this).html()));
-        });
+          $(window).resize(() => {
+            windowWidth = $(this).width();
+            isMobile = windowWidth < 1007;
+          });
 
-        $(window).resize(() => {
-          windowWidth = $(this).width();
-        });
+          $(".header__sub-menu").each(function () {
+            $(".header__sub-menu-box").append($("<div class='menu-box'>").html($(this).html()));
+          });
 
-        const updateHeaderStyle = (state, device) => {
-          const logoImg = state ? "./images/logo_color.png" : "./images/logo_black.png";
-          const langImg = state ? "./images/lang_icon2.png" : "./images/lang_icon.png";
-          const hrColor = state ? "#999999" : "rgba(255, 255, 255, 0.5)";
-          const headerMenuColor = state ? "black" : "white";
-          const langBtnBorder = state ? "solid 1px #999999" : "solid 1px white";
-          const menuImg = state ? "./images/menu_black.png" : "./images/menu_color.png";
-          let headerConBgColor;
+          const updateHeaderStyle = (state) => {
+            const logoImg = state ? "./images/logo_color.png" : "./images/logo_black.png";
+            const langImg = state ? "./images/lang_icon2.png" : "./images/lang_icon.png";
+            const hrColor = state ? "#999999" : "rgba(255, 255, 255, 0.5)";
+            const headerMenuColor = state ? "black" : "white";
+            const langBtnBorder = state ? "solid 1px #999999" : "solid 1px white";
+            const menuImg = state ? "./images/menu_black.png" : "./images/menu_color.png";
+            let headerConBgColor;
 
-          if (device === "mb") {
-            headerConBgColor = "white";
-          } else if (windowWidth < 1007) {
-            if (state) {
-              headerConBgColor = "rgba(255, 255, 255, 0.9)";
-            } else {
-              headerConBgColor = "transparent";
-            }
-          } else {
-            if (state) {
-              headerConBgColor = "white";
-            } else {
-              headerConBgColor = "transparent";
-            }
-          }
-
-          const langSpan = (val) => {
-            if (state) {
-              if (lang === val) {
-                return "black";
+            if (isMobile) {
+              if (state) {
+                headerConBgColor = "rgba(255, 255, 255, 0.9)";
               } else {
-                return "#999999";
+                headerConBgColor = "transparent";
               }
             } else {
-              if (lang === val) {
-                return "white";
+              if (state) {
+                headerConBgColor = "white";
               } else {
-                return "rgba(255, 255, 255, 0.5)";
+                headerConBgColor = "transparent";
               }
             }
+
+            const langSpan = (val) => {
+              if (state) {
+                if (lang === val) {
+                  return "black";
+                } else {
+                  return "#999999";
+                }
+              } else {
+                if (lang === val) {
+                  return "white";
+                } else {
+                  return "rgba(255, 255, 255, 0.5)";
+                }
+              }
+            };
+
+            $(".mb-header__language-button").css("color", headerMenuColor);
+            $("header").css("backgroundColor", headerConBgColor);
+            $(".header__menu-title").css("color", headerMenuColor);
+            $(".header__language-button-box").css("border", langBtnBorder);
+            $(".header__language-button--hr").css("color", hrColor);
+            $(".header__logo img").attr("src", logoImg);
+            $(".header__language-button-box img").attr("src", langImg);
+            $(".menu__btn-con img").attr("src", menuImg);
+            $krBtn.css("color", langSpan("KR"));
+            $enBtn.css("color", langSpan("EN"));
           };
 
-          $("header").css("backgroundColor", headerConBgColor);
-          $(".header__menu-title").css("color", headerMenuColor);
-          $(".header__language-button-box").css("border", langBtnBorder);
-          $(".header__language-button--hr").css("color", hrColor);
-          $(".header__logo img").attr("src", logoImg);
-          $(".header__language-button-box img").attr("src", langImg);
-          $(".menu__btn-con img").attr("src", menuImg);
-          $krBtn.css("color", langSpan("KR"));
-          $enBtn.css("color", langSpan("EN"));
-        };
-
-        // 언어 버튼 클릭 이벤트 핸들러
-        $krBtn.click(() => {
-          lang = "KR";
-          updateHeaderStyle(true);
-        });
-        $enBtn.click(() => {
-          lang = "EN";
-          updateHeaderStyle(true);
-        });
-
-        // 스크롤 이벤트 핸들러
-        $(window).scroll(() => {
-          if (webMenuOpenCheck || mbMenuOpenCheck) {
-            return;
-          }
-          if (scrollY > 120) {
-            scrollCheck = true;
+          // 언어 버튼 클릭 이벤트 핸들러
+          $krBtn.click(() => {
+            lang = "KR";
             updateHeaderStyle(true);
-          } else {
-            scrollCheck = false;
-            updateHeaderStyle(false);
-          }
-        });
+          });
+          $enBtn.click(() => {
+            lang = "EN";
+            updateHeaderStyle(true);
+          });
 
-        // 헤더 마우스 오버시 로직
-        $("header").hover(
-          () => {
-            if (!scrollCheck) {
-              updateHeaderStyle(true);
+          // 스크롤 이벤트 핸들러
+          $(window).scroll(() => {
+            if (webMenuOpenCheck || mbMenuOpenCheck) {
+              return;
             }
-          },
-          () => {
-            if (!scrollCheck) {
+            if (scrollY > 120) {
+              scrollCheck = true;
+              updateHeaderStyle(true);
+            } else {
+              scrollCheck = false;
               updateHeaderStyle(false);
             }
-          }
-        );
+          });
 
-        $(".header__menu-con, .header__sub-menu-con").hover(
-          () => {
-            webMenuOpenCheck = true;
-            $(".header__sub-menu-con").stop().slideDown().css("display", "grid");
-          },
-          () => {
-            webMenuOpenCheck = false;
-            $(".header__sub-menu-con").stop().slideUp();
-          }
-        );
+          // 헤더 마우스 오버시 로직
+          $("header").hover(
+            () => {
+              if (!scrollCheck && !isMobile) {
+                updateHeaderStyle(true);
+              }
+            },
+            () => {
+              if (!scrollCheck && !isMobile) {
+                updateHeaderStyle(false);
+              }
+            }
+          );
+          $(".mb-header__language-button").html(lang);
+          $(".header__language-button-box").click(() => {
+            if (isMobile) {
+              if (lang === "KR") {
+                lang = "EN";
+                $(".mb-header__language-button").html(lang);
+              } else {
+                lang = "KR";
+                $(".mb-header__language-button").html(lang);
+              }
+            }
+          });
 
-        $(".header__menu-title").hover(
-          function () {
-            $(this).css("color", "#f26933");
-          },
-          function () {
-            $(this).css("color", "black");
-          }
-        );
+          $(".header__menu-con, .header__sub-menu-con").hover(
+            () => {
+              if (!isMobile) {
+                webMenuOpenCheck = true;
+                $(".header__sub-menu-con").stop().slideDown().css("display", "grid");
+              }
+            },
+            () => {
+              if (!isMobile) {
+                webMenuOpenCheck = false;
+                $(".header__sub-menu-con").stop().slideUp();
+              }
+            }
+          );
 
-        // 초기 스타일 업데이트
-        updateHeaderStyle(false);
+          $(".header__menu-title").hover(
+            function () {
+              $(this).css("color", "#f26933");
+            },
+            function () {
+              $(this).css("color", "black");
+            }
+          );
+
+          // 초기 스타일 업데이트
+          updateHeaderStyle(false);
+        });
       });
     </script>
   </head>
@@ -211,6 +230,7 @@
       <div class="header__right-con">
         <div class="header__button-con">
           <div class="header__language-button-box">
+            <span class="mb-header__language-button"></span>
             <span class="header__language-button--kr">KR</span>
             <span class="header__language-button--hr">|</span>
             <span class="header__language-button--en">EN</span>
@@ -289,6 +309,8 @@
         </div>
       </div>
     </div>
-    <div style="height: 100vh"></div>
+    <div style="height: 100vh">
+      <h2>hihi</h2>
+    </div>
   </body>
 </html>

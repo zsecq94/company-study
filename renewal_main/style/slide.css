@@ -102,7 +102,7 @@
   height: 16px;
 }
 
-@media all and (max-width: 1023px) {
+@media screen and (max-width: 1023px) {
   .slide__item {
     width: 100%;
     min-width: 100%;

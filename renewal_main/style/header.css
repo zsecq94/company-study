@@ -125,7 +125,7 @@ header {
   cursor: pointer;
 }
 
-.mb-header__menu-con {
+.mb-header__language-button {
   display: none;
 }
 
@@ -181,7 +181,12 @@ header {
   }
 
   .header__language-button--hr,
+  .header__language-button--kr,
   .header__language-button--en {
     display: none;
+  }
+
+  .mb-header__language-button {
+    display: block;
   }
 }
