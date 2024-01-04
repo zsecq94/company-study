@@ -78,12 +78,14 @@
   color: white;
   font-weight: bold;
   font-size: 18px;
+  width: 20px;
 }
 
 .nav-con__end {
   color: rgba(255, 255, 255, 0.3);
   font-weight: bold;
   font-size: 18px;
+  width: 20px;
 }
 
 .slide-icon-box {
@@ -157,10 +159,12 @@
   }
 
   .nav-con__start {
+    width: 15px;
     font-size: 14px;
   }
 
   .nav-con__end {
+    width: 15px;
     font-size: 14px;
   }
 }

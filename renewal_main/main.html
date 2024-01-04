@@ -4,17 +4,125 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>렉스이노베이션</title>
-
     <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="./main.css" type="text/css" />
     <link rel="stylesheet" href="./style/slide.css" type="text/css" />
-    <link rel="stylesheet" href="./style.css" type="text/css" />
     <link rel="stylesheet" href="./style/header.css" type="text/css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
     <script src="./components/slide.js"></script>
     <script src="./components/header.js"></script>
-    <script></script>
+    <script>
+      $(document).ready(() => {
+        let mbMenuOpenCheck = false;
+        let webMenuOpenCheck = false;
+        let isMobile = false;
+        let lang = "KR";
+        $(window).resize(function () {
+          if (1007 > $(this).width()) {
+            isMobile = true;
+          } else {
+            isMobile = false;
+            $("header .main-menu-con").removeAttr("style");
+          }
+        });
+
+        const updateHeaderStyle = (state) => {
+          const headerLogoSrc = state ? "./images/logo_color.png" : "./images/logo_black.png";
+          const headerBgColor = state ? "white" : "transparent";
+          const headerMenu = state ? "black" : "white";
+          const headerRightHr = state ? { color: "black", opacity: 0.1 } : { color: "#fff", opacity: 0.1 };
+          const headerRightLangSrc = state ? "./images/lang_icon2.png" : "./images/lang_icon.png";
+          const headerRightBorder = state ? "solid 1px #eee" : "solid 1px white";
+
+          $("header").css("backgroundColor", headerBgColor);
+          $("header .logo-box > img").attr("src", headerLogoSrc);
+          $("header .main-menu-con .menu-box a").css("color", headerMenu);
+          $("header .right-box > div > .hr").css(headerRightHr);
+          $("header .right-box > div > img").attr("src", headerRightLangSrc);
+          $("header .right-box div").css("border", headerRightBorder);
+        };
+
+        $("header .right-box > img").click(() => {
+          mbMenuOpenCheck = !mbMenuOpenCheck;
+          if (mbMenuOpenCheck) {
+            $("body").addClass("no-scroll");
+            $("header .main-menu-con").stop().slideDown();
+          } else {
+            $("body").removeClass("no-scroll");
+            $("header .main-menu-con").stop().slideUp();
+          }
+        });
+
+        $("header").hover(
+          () => {
+            if (!isMobile) {
+              updateHeaderStyle(true);
+            }
+          },
+          () => {
+            if (!isMobile) {
+              updateHeaderStyle(false);
+            }
+          }
+        );
+
+        $(window).scroll(() => {
+          if (webMenuOpenCheck || mbMenuOpenCheck) {
+            return;
+          }
+          if (scrollY > 100) {
+            updateHeaderStyle(true);
+          } else {
+            updateHeaderStyle(false);
+          }
+        });
+
+        updateHeaderStyle(false);
+      });
+    </script>
   </head>
   <body>
+    <header>
+      <div class="logo-box">
+        <img src="./images/logo_black.png" alt="" />
+      </div>
+      <div class="main-menu-con">
+        <div class="menu-box">
+          <a href="#">회사소개</a>
+          <img src="./images/down_icon.png" alt="" />
+        </div>
+        <div class="menu-box">
+          <a href="#">비즈니스 분야</a>
+          <img src="./images/down_icon.png" alt="" />
+        </div>
+        <div class="menu-box">
+          <a href="#">보유기술</a>
+          <img src="./images/down_icon.png" alt="" />
+        </div>
+        <div class="menu-box">
+          <a href="#">IR</a>
+          <img src="./images/down_icon.png" alt="" />
+        </div>
+        <div class="menu-box">
+          <a href="#">PR</a>
+          <img src="./images/down_icon.png" alt="" />
+        </div>
+      </div>
+      <div class="right-box">
+        <div>
+          <span class="kr">KR</span>
+          <span class="hr">|</span>
+          <span class="en">EN</span>
+          <img src="./images/lang_icon.png" alt="" />
+        </div>
+        <img src="./images/menu_color.png" alt="" />
+      </div>
+    </header>
+    <nav>
+      <div></div>
+      <div></div>
+      <div></div>
+    </nav>
     <div class="slide-con">
       <div class="slide">
         <div class="slide__item">

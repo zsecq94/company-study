@@ -1,0 +1,134 @@
+header {
+  position: fixed;
+  box-sizing: border-box;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+  align-items: center;
+  width: 100%;
+  padding: 35px 80px;
+  transition: 0.5s;
+  background-color: transparent;
+}
+
+header .logo-box img {
+  width: 246px;
+}
+
+header .main-menu-con {
+  display: flex;
+  justify-content: space-between;
+}
+
+header .main-menu-con .menu-box a {
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+}
+
+header .main-menu-con .menu-box img {
+  display: none;
+}
+
+header .right-box {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 20px;
+}
+
+header .right-box div {
+  display: flex;
+  align-items: center;
+  border: solid 1px white;
+  padding: 8px 16px;
+  gap: 8px;
+  border-radius: 20px;
+}
+
+header .right-box > img {
+  width: 20px;
+  display: none;
+}
+
+header .right-box div > img {
+  width: 22px;
+}
+
+header .right-box > div > .kr,
+.en {
+  font-size: 16px;
+  color: #fff;
+  opacity: 0.5;
+}
+
+header .right-box > div > .hr {
+  color: #fff;
+  opacity: 0.1;
+}
+
+@media screen and (min-width: 1024px) {
+}
+
+@media screen and (max-width: 1023px) {
+  header {
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  header .logo-box img {
+    width: 163px;
+  }
+
+  header .main-menu-con {
+    display: none;
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    background-color: white;
+    flex-direction: column;
+    align-items: left;
+    margin-left: -20px;
+    overflow-y: auto;
+    height: 99vh;
+    padding: 0 0 50px 0;
+  }
+
+  header .main-menu-con .menu-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+  }
+
+  header .main-menu-con .menu-box a {
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+  }
+
+  header .main-menu-con .menu-box img {
+    display: block;
+    width: 25px;
+  }
+
+  header .right-box div {
+    padding: 5px 10px;
+    gap: 6px;
+  }
+
+  header .right-box img {
+    display: block;
+  }
+
+  header .right-box div span {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  header .right-box div .en,
+  header .right-box div .hr {
+    display: none;
+  }
+}

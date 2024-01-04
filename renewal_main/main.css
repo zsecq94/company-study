@@ -22,8 +22,9 @@ html, body, div, span, applet, object, iframe,
   /* ###############자동정렬방지###############*/ {
   margin: 0;
   padding: 0;
-  border: 0;
+  border: none;
   list-style: none;
+  text-decoration: none;
 }
 
 body {
@@ -35,4 +36,8 @@ body {
 .no-scroll {
   overflow: hidden;
   height: 100%;
+}
+
+div {
+  box-sizing: border-box;
 }
