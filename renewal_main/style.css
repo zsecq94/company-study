@@ -31,3 +31,8 @@ body {
   overflow-x: hidden;
   word-break: keep-all;
 }
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+}

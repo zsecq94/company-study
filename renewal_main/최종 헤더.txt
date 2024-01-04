@@ -1,8 +1,526 @@
-<script>
+<header>
+      <div class="header__logo">
+        <img src="./images/logo_black.png" alt="Company Logo" />
+      </div>
+      <nav class="header__menu-con">
+        <div class="header__menu-box">
+          <div class="menu__title-box">
+            <span class="header__menu-title">회사소개</span>
+            <img src="./images/down_icon.png" alt="" />
+          </div>
+          <div class="header__sub-menu">
+            <a href="#">인사말</a>
+            <a href="#">연혁</a>
+            <a href="#">인증내역</a>
+            <a href="#">수상내역</a>
+            <a href="#">MEMBER</a>
+            <a href="#">찾아오시는 방법</a>
+          </div>
+        </div>
+        <div class="header__menu-box">
+          <div class="menu__title-box">
+            <span class="header__menu-title">비즈니스 분야</span>
+            <img src="./images/down_icon.png" alt="" />
+          </div>
+          <div class="header__sub-menu">
+            <a href="#">재생에너지 발전</a>
+            <a href="#">VPP(가상발전소)</a>
+            <a href="#">ESS(에너지저장시스템)</a>
+            <a href="#">Power to Vehicle(P2V)</a>
+            <a href="#">DR(Demand Response)</a>
+            <a href="#">Fintech</a>
+          </div>
+        </div>
+        <div class="header__menu-box">
+          <div class="menu__title-box">
+            <span class="header__menu-title">보유기술</span>
+            <img src="./images/down_icon.png" alt="" />
+          </div>
+          <div class="header__sub-menu">
+            <a href="#">AI 빅데이터센터</a>
+            <a href="#">기술 특허 현황</a>
+            <a href="#">기업부설연구소 R&D실적</a>
+            <a href="#">시험성적</a>
+          </div>
+        </div>
+        <div class="header__menu-box">
+          <div class="menu__title-box">
+            <span class="header__menu-title">IR</span>
+            <img src="./images/down_icon.png" alt="" />
+          </div>
+          <div class="header__sub-menu">
+            <a href="#">공지사항</a>
+            <a href="#">기업정보(IR)</a>
+            <a href="#">투자하기</a>
+          </div>
+        </div>
+        <div class="header__menu-box">
+          <div class="menu__title-box">
+            <span class="header__menu-title">PR</span>
+            <img src="./images/down_icon.png" alt="" />
+          </div>
+          <div class="header__sub-menu">
+            <a href="#">NEWS</a>
+            <a href="#">인사이트</a>
+            <a href="#">시장동향</a>
+            <a href="#">문의사항</a>
+            <a href="#">자료실</a>
+            <a href="#">인재채용</a>
+          </div>
+        </div>
+      </nav>
+      <div class="header__right-con">
+        <div class="header__button-con">
+          <div class="header__language-button-box">
+            <span class="mb-header__language-button"></span>
+            <span class="header__language-button--kr">KR</span>
+            <span class="header__language-button--hr">|</span>
+            <span class="header__language-button--en">EN</span>
+            <img src="./images/lang_icon.png" alt="Language Icon" />
+          </div>
+          <div class="menu__btn-con">
+            <img src="./images/menu_color.png" alt="Menu Icon" />
+          </div>
+        </div>
+      </div>
+      <div class="header__sub-menu-con">
+        <div></div>
+        <div class="header__sub-menu-box"></div>
+        <div></div>
+      </div>
+    </header>
 
-    </script>
+
+    /////////////////////////////////////////////////////////////
 
 
-    
+    $(document).ready(() => {
+        let windowWidth = $(window).width();
+        let lang = "KR";
+        let $krBtn = $(".header__language-button--kr");
+        let $enBtn = $(".header__language-button--en");
+        let scrollCheck = false;
+        let menuBtnCheck = false;
+        let isMobile = windowWidth < 1007;
+        let webMenuOpenCheck = false;
+        let mbMenuOpenCheck = false;
+
+        $(window).resize(() => {
+          windowWidth = $(this).width();
+          isMobile = windowWidth < 1007;
+        });
+
+        $(".header__sub-menu").each(function () {
+          $(".header__sub-menu-box").append($("<div class='menu-box'>").html($(this).html()));
+        });
+
+        const updateHeaderStyle = (state, device) => {
+          const logoImg = state ? "./images/logo_color.png" : "./images/logo_black.png";
+          const langImg = state ? "./images/lang_icon2.png" : "./images/lang_icon.png";
+          const hrColor = state ? "#999999" : "rgba(255, 255, 255, 0.5)";
+          const langBtnBorder = state ? "solid 1px #999999" : "solid 1px white";
+          const menuImg = state ? "./images/menu_black.png" : "./images/menu_color.png";
+          let headerLangBtnColor;
+          let headerConBgColor;
+          let headerMenuColor;
+
+          if (isMobile) {
+            headerMenuColor = "black";
+            if (state) {
+              headerConBgColor = "rgba(255, 255, 255, 0.9)";
+              headerLangBtnColor = "black";
+            } else {
+              headerConBgColor = "transparent";
+              headerLangBtnColor = "white";
+            }
+          } else {
+            if (state) {
+              headerConBgColor = "white";
+              headerMenuColor = "black";
+            } else {
+              headerConBgColor = "transparent";
+              headerMenuColor = "white";
+            }
+          }
+
+          if (device === "mb") {
+            headerConBgColor = "white";
+          }
+
+          const langSpan = (val) => {
+            if (state) {
+              if (lang === val) {
+                return "black";
+              } else {
+                return "#999999";
+              }
+            } else {
+              if (lang === val) {
+                return "white";
+              } else {
+                return "rgba(255, 255, 255, 0.5)";
+              }
+            }
+          };
+
+          $(".mb-header__language-button").css("color", headerLangBtnColor);
+          $("header").css("backgroundColor", headerConBgColor);
+          $(".header__menu-title").css("color", headerMenuColor);
+          $(".header__language-button-box").css("border", langBtnBorder);
+          $(".header__language-button--hr").css("color", hrColor);
+          $(".header__logo img").attr("src", logoImg);
+          $(".header__language-button-box img").attr("src", langImg);
+          $(".menu__btn-con img").attr("src", menuImg);
+          $krBtn.css("color", langSpan("KR"));
+          $enBtn.css("color", langSpan("EN"));
+        };
+
+        // 언어 버튼 클릭 이벤트 핸들러
+        $krBtn.click(() => {
+          lang = "KR";
+          updateHeaderStyle(true);
+        });
+        $enBtn.click(() => {
+          lang = "EN";
+          updateHeaderStyle(true);
+        });
+
+        // 스크롤 이벤트 핸들러
+        $(window).scroll(() => {
+          if (webMenuOpenCheck || mbMenuOpenCheck) {
+            return;
+          }
+          if (scrollY > 120) {
+            scrollCheck = true;
+            updateHeaderStyle(true);
+          } else {
+            scrollCheck = false;
+            updateHeaderStyle(false);
+          }
+        });
+
+        // 헤더 마우스 오버시 로직
+        $("header").hover(
+          () => {
+            if (!scrollCheck && !isMobile) {
+              updateHeaderStyle(true);
+            }
+          },
+          () => {
+            if (!scrollCheck && !isMobile) {
+              updateHeaderStyle(false);
+            }
+          }
+        );
+        $(".mb-header__language-button").html(lang);
+        $(".header__language-button-box").click(() => {
+          if (isMobile) {
+            if (lang === "KR") {
+              lang = "EN";
+              $(".mb-header__language-button").html(lang);
+            } else {
+              lang = "KR";
+              $(".mb-header__language-button").html(lang);
+            }
+          }
+        });
+
+        $(".header__menu-con, .header__sub-menu-con").hover(
+          () => {
+            if (!isMobile) {
+              webMenuOpenCheck = true;
+              $(".header__sub-menu-con").stop().slideDown().css("display", "grid");
+            }
+          },
+          () => {
+            if (!isMobile) {
+              webMenuOpenCheck = false;
+              $(".header__sub-menu-con").stop().slideUp();
+            }
+          }
+        );
+
+        $(".header__menu-title").hover(
+          function () {
+            if (!isMobile) {
+              $(this).css("color", "#f26933");
+            }
+          },
+          function () {
+            $(this).css("color", "black");
+          }
+        );
+
+        // 초기 스타일 업데이트
+        updateHeaderStyle(false);
+
+        $(".menu__btn-con").click(() => {
+          mbMenuOpenCheck = !mbMenuOpenCheck;
+          if (isMobile && mbMenuOpenCheck) {
+            $("body").addClass("no-scroll");
+            updateHeaderStyle(true, "mb");
+            $(".header__menu-con").slideDown().css("display", "flex");
+          } else {
+            $("body").removeClass("no-scroll");
+            updateHeaderStyle(false);
+            $(".header__menu-con").slideUp().css("height", "auto");
+          }
+        });
+
+        let subMenuOpenCheck = false;
+        $(".header__menu-box img").click(function () {
+          subMenuOpenCheck = !subMenuOpenCheck;
+          if (subMenuOpenCheck) {
+            $(this).parent().siblings(".header__sub-menu").slideDown().css("display", "flex");
+          } else {
+            $(this).parent().siblings(".header__sub-menu").slideUp();
+          }
+        });
+      });
 
 
+//////////////////////////////////////////////////
+
+
+
+.header__logo img {
+  width: 250px;
+}
+
+.header__menu-box img {
+  display: none;
+  width: 20px;
+}
+
+.menu-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.menu-box a {
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.menu-box a:hover {
+  color: #f26933;
+  text-decoration: underline 1px #f26933;
+}
+
+.header__button-con {
+  display: flex;
+  justify-content: end;
+}
+
+.header__language-button-box img {
+  width: 22px;
+}
+
+.menu__btn-con img {
+  display: none;
+}
+
+.header__language-button-box {
+  display: flex;
+  padding: 10px 16px;
+  align-items: center;
+  gap: 8px;
+  border-radius: 20px;
+  border: 1px solid #fff;
+  color: white;
+}
+
+.header__language-button--hr {
+  opacity: 0.5;
+}
+
+.header__language-button--kr,
+.header__language-button--en {
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+}
+
+.mb-header__language-button {
+  display: none;
+}
+
+@media all and (min-width: 1024px) {
+  header {
+    box-sizing: border-box;
+    position: fixed;
+    display: grid;
+    grid-template-columns: 3fr 6fr 3fr;
+    background-color: transparent;
+    width: 100%;
+    z-index: 1;
+    height: 100px;
+    padding: 0px 70px;
+    align-items: center;
+    transition: 0.5s;
+  }
+
+  .header__menu-con {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    height: 100%;
+    padding-left: 100px;
+  }
+
+  .header__menu-title {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  .header__menu-box {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    height: 100%;
+    align-items: center;
+  }
+
+  .header__sub-menu-con {
+    display: none;
+    grid-template-columns: 3fr 6fr 3fr;
+    position: absolute;
+    box-sizing: border-box;
+    top: 100%;
+    width: 100%;
+    padding: 0px 70px;
+    background-color: white;
+    border-top: solid 1px #999999;
+  }
+
+  .header__sub-menu-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    padding: 40px 0px;
+    padding-left: 100px;
+  }
+
+  .header__sub-menu {
+    display: none;
+    flex-direction: column;
+    top: 100px;
+    padding: 40px 0px;
+    gap: 16px;
+    position: absolute;
+    background-color: white;
+  }
+}
+
+@media all and (max-width: 1023px) {
+  header {
+    height: auto;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    position: fixed;
+    justify-content: space-between;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    transition: 0.5s;
+  }
+
+  .header__logo img {
+    width: 163px;
+  }
+
+  .header__menu-con {
+    display: none;
+    box-sizing: border-box;
+    position: absolute;
+    top: 100%;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    margin-left: -20px;
+    height: 100vh;
+    padding: 20px 20px 100px 20px;
+    overflow: auto;
+  }
+
+  .header__menu-box {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .menu__title-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px 0px;
+  }
+
+  .header__menu-title {
+    color: black;
+  }
+
+  .header__sub-menu {
+    display: none;
+    flex-direction: column;
+    gap: 30px;
+    padding: 20px 30px;
+  }
+
+  .header__sub-menu a {
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 500;
+    color: black;
+  }
+
+  .header__sub-menu-con {
+    display: none;
+  }
+
+  .header__button-con {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header__menu-box img {
+    display: block;
+  }
+
+  .header__menu-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+  }
+
+  .menu__btn-con img {
+    cursor: pointer;
+    display: block;
+    width: 20px;
+  }
+
+  .header__language-button-box {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .header__language-button-box img {
+    width: 18px;
+  }
+
+  .header__language-button--hr,
+  .header__language-button--kr,
+  .header__language-button--en {
+    display: none;
+  }
+
+  .mb-header__language-button {
+    display: block;
+  }
+}
