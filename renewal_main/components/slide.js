@@ -5,7 +5,7 @@ $(document).ready(() => {
   let slidePage = 1;
 
   const updateSlideStart = () => {
-    $(".nav-con__start").html(`<span>0${slidePage}</span>`);
+    $(".nav-con-start").html(`<span>0${slidePage}</span>`);
   };
 
   const updateProgressBar = () => {
@@ -14,17 +14,17 @@ $(document).ready(() => {
     } else {
       timeLinearWidth += 0.207;
     }
-    $(".timerbar-box__timebar").css("width", timeLinearWidth + "%");
+    $(".timerbar-box-timebar").css("width", timeLinearWidth + "%");
   };
 
   const slideTransition = () => {
-    $(".slide__item:first").fadeOut(1000).next().fadeIn(100).end().appendTo(".slide");
+    $(".slide-item:first").fadeOut(1000).next().fadeIn(100).end().appendTo(".slide");
   };
 
   const resetValues = () => {
     timeLinearWidth = 0;
     remainingSeconds = totalSeconds;
-    $(".timerbar-box__timebar").css("width", "0%");
+    $(".timerbar-box-timebar").css("width", "0%");
   };
 
   const slideInterval = () => {
@@ -40,12 +40,12 @@ $(document).ready(() => {
   let timeLinearInterval = setInterval(updateProgressBar, 14);
   let sliderInterval = setInterval(slideInterval, 1000);
 
-  $(".slide__item:gt(0)").hide();
+  $(".slide-item:gt(0)").hide();
   updateSlideStart();
 
   const prevSlide = () => {
-    let current = $(".slide__item:visible");
-    let last = $(".slide__item:last");
+    let current = $(".slide-item:visible");
+    let last = $(".slide-item:last");
 
     current.fadeOut(1000);
     last.hide().prependTo(".slide").fadeIn(100);
@@ -80,6 +80,6 @@ $(document).ready(() => {
     timeLinearInterval = setInterval(updateProgressBar, 14);
   };
 
-  $(".icon-box__prev").click(prevSlide);
-  $(".icon-box__next").click(nextSlide);
+  $(".icon-box-prev").click(prevSlide);
+  $(".icon-box-next").click(nextSlide);
 });

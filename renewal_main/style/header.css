@@ -3,12 +3,12 @@ header {
   box-sizing: border-box;
   z-index: 1;
   display: grid;
-  grid-template-columns: 2fr 3fr 2fr;
+  grid-template-columns: 2fr 5fr 2fr;
   align-items: center;
   width: 100%;
-  padding: 35px 80px;
+  height: 100px;
+  padding: 0px 80px;
   transition: 0.5s;
-  background-color: transparent;
 }
 
 header .logo-box img {
@@ -16,8 +16,11 @@ header .logo-box img {
 }
 
 header .main-menu-con {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  align-items: center;
+  height: 100%;
+  padding-left: 150px;
 }
 
 header .main-menu-con .menu-box a {
@@ -46,35 +49,65 @@ header .right-box div {
   border-radius: 20px;
 }
 
-header .right-box > img {
+header .right-box img {
   width: 20px;
   display: none;
 }
 
-header .right-box div > img {
+header .right-box div img {
   width: 22px;
 }
 
-header .right-box > div > .kr,
+header .right-box div .kr,
 .en {
   font-size: 16px;
-  color: #fff;
-  opacity: 0.5;
+  cursor: pointer;
 }
 
-header .right-box > div > .hr {
-  color: #fff;
-  opacity: 0.1;
+.mb-lang-span {
+  display: none;
 }
 
-@media screen and (min-width: 1024px) {
+nav {
+  display: none;
+  position: absolute;
+  box-sizing: border-box;
+  top: 100%;
+  width: 100%;
+  background-color: white;
+  grid-template-columns: 2fr 5fr 2fr;
+  padding: 0px 80px;
+  border-top: solid 1px #eee;
+}
+
+nav .sub-menu-con {
+  padding: 40px 0px 40px 150px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  height: 100%;
+}
+
+nav .sub-menu-con .sub-menu-box {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+nav .sub-menu-con .sub-menu-box a {
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  color: black;
 }
 
 @media screen and (max-width: 1023px) {
   header {
-    padding: 12px 20px;
+    padding: 0px 20px;
+    position: fixed;
     display: flex;
     justify-content: space-between;
+    height: 54px;
+    align-items: center;
   }
 
   header .logo-box img {
@@ -95,7 +128,7 @@ header .right-box > div > .hr {
     padding: 0 0 50px 0;
   }
 
-  header .main-menu-con .menu-box {
+  header .main-menu-con .menu-box .menu-title-box {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -103,7 +136,7 @@ header .right-box > div > .hr {
   }
 
   header .main-menu-con .menu-box a {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: 600;
     color: black;
   }
@@ -122,13 +155,36 @@ header .right-box > div > .hr {
     display: block;
   }
 
+  header .right-box div img {
+    width: 18px;
+  }
+
   header .right-box div span {
     font-size: 14px;
     font-weight: 500;
   }
 
   header .right-box div .en,
-  header .right-box div .hr {
+  header .right-box div .hr,
+  header .right-box div .kr {
     display: none;
+  }
+
+  .mb-lang-span {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    width: 15px;
+  }
+
+  nav {
+    display: none;
+  }
+
+  .menu-box .sub-menu-box {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    gap: 30px;
   }
 }
