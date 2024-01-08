@@ -14,7 +14,75 @@
     <script src="./components/slide.js"></script>
     <script src="./components/header.js"></script>
     <script>
-      $(document).ready(() => {});
+      $(document).ready(() => {
+        const contentBoxes = [".content-con > .top-box > .content-box", ".content-con > .mid-box > .content-box"];
+        const prevNavs = [
+          ".content-con > .top-box > .title-box > .nav-btn-box > .prev",
+          ".content-con > .mid-box > .title-box > .nav-btn-box > .prev",
+        ];
+        const nextNavs = [
+          ".content-con > .top-box > .title-box > .nav-btn-box > .next",
+          ".content-con > .mid-box > .title-box > .nav-btn-box > .next",
+        ];
+        const translateAmounts = [327, 435];
+        const translateAmountsMobile = [300, 392];
+        const contentsLengths = [4, 3];
+        let currentIndexes = [0, 0];
+        let translateXs = [0, 0];
+
+        const updateNavButtons = (num) => {
+          let prevNav = $(prevNavs[num]);
+          let nextNav = $(nextNavs[num]);
+          let contents = $(`${contentBoxes[num]} .content`);
+
+          if (currentIndexes[num] === 0) {
+            prevNav.addClass("nav-dissabled");
+          } else if (currentIndexes[num] === contents.length - contentsLengths[num]) {
+            nextNav.addClass("nav-dissabled");
+          } else {
+            prevNav.removeClass("nav-dissabled");
+            nextNav.removeClass("nav-dissabled");
+          }
+        };
+
+        const move = (isMobile, num, direction) => {
+          currentIndexes[num] += direction;
+          updateNavButtons(num);
+          translateXs[num] += (isMobile ? translateAmountsMobile[num] : translateAmounts[num]) * direction;
+          $(contentBoxes[num]).css("transform", `translateX(-${translateXs[num]}px)`);
+        };
+
+        for (let i = 0; i < contentBoxes.length; i++) {
+          $(prevNavs[i]).click(() => {
+            if (currentIndexes[i] > 0) {
+              move(false, i, -1);
+            }
+          });
+
+          $(nextNavs[i]).click(() => {
+            if (currentIndexes[i] < $(`${contentBoxes[i]} .content`).length - contentsLengths[i]) {
+              move(false, i, 1);
+            }
+          });
+
+          var startPoint, endPoint;
+          $(contentBoxes[i]).on("touchstart", (e) => {
+            startPoint = e.touches[0].pageX;
+          });
+
+          $(contentBoxes[i]).on("touchend", (e) => {
+            endPoint = e.changedTouches[0].pageX;
+
+            if (startPoint < endPoint && currentIndexes[i] > 0) {
+              move(true, i, -1);
+            } else if (startPoint > endPoint && currentIndexes[i] < $(`${contentBoxes[i]} .content`).length - 1) {
+              move(true, i, 1);
+            }
+          });
+
+          updateNavButtons(i);
+        }
+      });
     </script>
   </head>
   <body>
@@ -169,16 +237,143 @@
       </div>
     </div>
     <div class="content-con">
-      <div class="content1-con">
-        <div class="top-box">
-          <div class="title-box">
-            <span class="title">렉스이노베이션은 지속 가능한 미래를 위해 새로운 가치를 찾고 있습니다</span>
+      <div class="top-box">
+        <div class="title-box">
+          <span class="title">렉스이노베이션은 지속 가능한 미래를 위해 새로운 가치를 찾고 있습니다.</span>
+          <div class="nav-btn-box">
+            <img class="prev" src="./images/content1/prev_icon.png" alt="" />
+            <img class="next" src="./images/content1/next_icon.png" alt="" />
           </div>
-          <h2>hi</h2>
         </div>
-        <div class="mid-box"></div>
-        <div class="bot-box"></div>
+        <div class="content-box">
+          <div class="content">
+            <p class="title">재생에너지 발전</p>
+            <p class="sub">
+              재생에너지 발전은 지구의 자연 자원을 보존하면서 전기를 생산하는 방법으로, 지속 가능한 발전 방식입니다.
+            </p>
+            <div class="detail-box">
+              <span>자세히보기</span>
+              <img src="./images/content1/detail_icon.png" alt="" />
+            </div>
+            <img class="box1-img" src="./images/content1/top1.png" alt="" />
+          </div>
+          <div class="content">
+            <p class="title">VPP(가상발전소)</p>
+            <p class="sub">
+              VPP는 가상적으로 연결된 발전소로 여러 개별 에너지 생산 시스템이 하나의 통합 시스템으로 운영됩니다.
+            </p>
+            <div class="detail-box">
+              <span>자세히보기</span>
+              <img src="./images/content1/detail_icon.png" alt="" />
+            </div>
+
+            <img class="box1-img" src="./images/content1/top2.png" alt="" />
+          </div>
+          <div class="content">
+            <p class="title">ESS(에너지저장시스템)</p>
+            <p class="sub">
+              ESS는 에너지 저장 시스템으로, 전력 그리드의 안정성과 신재생 에너지 통합에 기여하는 중요한 기술입니다.
+            </p>
+            <div class="detail-box">
+              <span>자세히보기</span>
+              <img src="./images/content1/detail_icon.png" alt="" />
+            </div>
+
+            <img class="box1-img" src="./images/content1/top3.png" alt="" />
+          </div>
+          <div class="content">
+            <p class="title">Power to Vehicle(P2V)</p>
+            <p class="sub">
+              Power to Vehicle 은 차량에 전원을 공급하는 시스템으로 배터리에서 전기 에너지를 차량의 전기 시스템으로
+              공급하여 모든 기능을 작동시킵니다.
+            </p>
+            <div class="detail-box">
+              <span>자세히보기</span>
+              <img src="./images/content1/detail_icon.png" alt="" />
+            </div>
+            <img class="box1-img" src="./images/content1/top4.png" alt="" />
+          </div>
+          <div class="content">
+            <p class="title">VPP(가상발전소)</p>
+            <p class="sub">
+              VPP는 가상적으로 연결된 발전소로 여러 개별 에너지 생산 시스템이 하나의 통합 시스템으로 운영됩니다.
+            </p>
+            <div class="detail-box">
+              <span>자세히보기</span>
+              <img src="./images/content1/detail_icon.png" alt="" />
+            </div>
+
+            <img class="box1-img" src="./images/content1/top2.png" alt="" />
+          </div>
+          <div class="content">
+            <p class="title">Power to Vehicle(P2V)</p>
+            <p class="sub">
+              Power to Vehicle 은 차량에 전원을 공급하는 시스템으로 배터리에서 전기 에너지를 차량의 전기 시스템으로
+              공급하여 모든 기능을 작동시킵니다.
+            </p>
+            <div class="detail-box">
+              <span>자세히보기</span>
+              <img src="./images/content1/detail_icon.png" alt="" />
+            </div>
+            <img class="box1-img" src="./images/content1/top4.png" alt="" />
+          </div>
+        </div>
       </div>
+      <div class="mid-box">
+        <div class="title-box">
+          <span class="title">PRODUCTS</span>
+          <div class="nav-btn-box">
+            <img class="prev" src="./images/content1/prev_icon.png" alt="" />
+            <img class="next" src="./images/content1/next_icon.png" alt="" />
+          </div>
+        </div>
+        <div class="content-box">
+          <div class="content black">
+            <div class="span-box">
+              <span class="category">ESS</span>
+              <span class="title">SAVING POWER 5kw Home</span>
+              <span class="sub">심야전기보일러 대상 요금 절약형 ESS 모델입니다.</span>
+            </div>
+            <img src="./images/content2/mid1.png" alt="" />
+          </div>
+          <div class="content">
+            <div class="span-box">
+              <span class="category">Renewable Energy</span>
+              <span class="title">유량변동대응 전력제어시스템</span>
+              <span class="sub">소수력발전용</span>
+            </div>
+            <img src="./images/content2/mid2.png" alt="" />
+          </div>
+          <div class="content">
+            <div class="span-box">
+              <span class="category">EMS</span>
+              <span class="title">Sun-Q EMS S/W</span>
+              <span class="sub">태양광발전소 모니터링 시스템</span>
+            </div>
+            <img src="./images/content2/mid3.png" alt="" />
+          </div>
+          <div class="content black">
+            <div class="span-box">
+              <span class="category">ESS</span>
+              <span class="title">SAVING POWER 5kw Home</span>
+              <span class="sub">심야전기보일러 대상 요금 절약형 ESS 모델입니다.</span>
+            </div>
+            <img src="./images/content2/mid1.png" alt="" />
+          </div>
+          <div class="content">
+            <div class="span-box">
+              <span class="category">Renewable Energy</span>
+              <span class="title">유량변동대응 전력제어시스템</span>
+              <span class="sub">소수력발전용</span>
+            </div>
+            <img src="./images/content2/mid2.png" alt="" />
+          </div>
+        </div>
+      </div>
+      <!-- <div class="mid-box2">
+        <img src="./images/content2/mid_bot1.png" alt="" />
+        <img src="./images/content2/mid_bot2.png" alt="" />
+      </div> -->
     </div>
   </body>
 </html>

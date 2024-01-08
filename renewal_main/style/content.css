@@ -1,43 +1,300 @@
 .content-con {
-  width: 100%;
+  min-width: 1280px;
 }
 
-.content-con > .content1-con {
-  padding: 140px 25%;
-  width: 100%;
-}
-
-.content-con > .content1-con > .top-box {
-  display: flex;
-  flex-direction: column;
+/* ////////////////////////////// */
+/* ////////////top-box/////////// */
+/* ////////////////////////////// */
+.content-con > .top-box {
+  padding: 140px 0px 70px;
+  position: relative;
   gap: 40px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 1280px;
+  overflow: hidden;
 }
 
-.content-con > .content1-con > .top-box > .title-box {
-  width: 40%;
+.content-con > .top-box > .title-box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
-.content-con > .content1-con > .top-box > .title-box > .title {
+.content-con > .top-box > .title-box > .title {
+  width: 50%;
   font-size: 34px;
   font-weight: 800;
 }
 
+.nav-btn-box {
+  display: flex;
+  align-items: end;
+  gap: 14px;
+}
+
+.nav-btn-box > img {
+  height: 18px;
+  border-radius: 25px;
+  padding: 10px 14px;
+  border: 1px solid #ebebeb;
+  cursor: pointer;
+}
+
+.nav-btn-box > .nav-dissabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.content-con > .top-box > .content-box {
+  display: flex;
+  gap: 34px;
+  margin-top: 40px;
+  float: left;
+  transition: transform 0.5s ease-in-out;
+}
+
+.content-con > .top-box > .content-box > .content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-radius: 8px;
+  border: 1px solid #ebebeb;
+  height: 368px;
+  width: 293px;
+}
+
+.content-con > .top-box > .content-box > .content > .box1-img {
+  width: 234px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-radius: 10px;
+}
+
+.content-con > .top-box > .content-box > .content > .title {
+  font-size: 20px;
+  font-weight: 600;
+  padding: 30px 30px 0px;
+}
+
+.content-con > .top-box > .content-box > .content > .sub {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+  padding: 0px 30px;
+}
+
+.content-con > .top-box > .content-box > .content > .detail-box {
+  color: #999;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0px 30px;
+}
+.content-con > .top-box > .content-box > .content > .detail-box > img {
+  width: 15px;
+  height: 12px;
+  cursor: pointer;
+}
+
+/* ////////////////////////////// */
+/* ////////////mid-box/////////// */
+/* ////////////////////////////// */
+
+.content-con > .mid-box {
+  position: relative;
+  padding: 70px 0px;
+  gap: 40px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 1280px;
+  overflow: hidden;
+}
+
+.content-con > .mid-box > .title-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 40px;
+}
+
+.content-con > .mid-box > .title-box > .title {
+  font-size: 50px;
+  font-weight: 800;
+}
+
+.content-con > .mid-box > .content-box {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+  transition: transform 0.5s ease-in-out;
+}
+
+.content-con > .mid-box > .content-box > .content {
+  background-color: #f7f7f8;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+  height: auto;
+}
+
+.content-con > .mid-box > .content-box > .black {
+  background-color: #202936;
+  color: white;
+}
+
+.content-con > .mid-box > .content-box > .content > .span-box {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-con > .mid-box > .content-box > .content > .span-box > .category {
+  color: #f26933;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.content-con > .mid-box > .content-box > .content > .span-box > .title {
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.content-con > .mid-box > .content-box > .content > .span-box > .sub {
+  font-size: 14px;
+  font-weight: 500;
+  color: #999;
+}
+
+.content-con > .mid-box > .content-box > .content > img {
+  width: 300px;
+  height: 240px;
+}
+
+.mid-box2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+  position: relative;
+  padding: 140px 0px 70px;
+  gap: 40px;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  width: 1280px;
+}
+
+.mid-box2 img {
+  width: 620px;
+}
+
+/* ////////////////////////////// */
+/* ////////////bot-box/////////// */
+/* ////////////////////////////// */
+
 @media screen and (max-width: 1023px) {
   .content-con {
+    min-width: 100%;
   }
 
-  .content-con > .content1-con {
+  .content-con > .top-box {
+    width: 100%;
+    gap: 40px;
     padding: 40px 20px;
   }
 
-  .content-con > .content1-con > .top-box {
+  .content-con > .top-box > .title-box {
   }
 
-  .content-con > .content1-con > .top-box > .title-box {
-    width: 75%;
-  }
-
-  .content-con > .content1-con > .top-box > .title-box > .title {
+  .content-con > .top-box > .title-box > .title {
     font-size: 20px;
+    width: 70%;
+    font-weight: 800;
+  }
+
+  .content-con > .top-box > .title-box > .nav-btn-box {
+    display: none;
+  }
+
+  .content-con > .top-box > .title-box > .nav-btn-box > img {
+  }
+
+  .content-con > .top-box > .content-box {
+    gap: 10px;
+  }
+
+  .content-con > .top-box > .content-box > .content {
+    width: 290px;
+  }
+
+  .content-con > .top-box > .content-box > .content > img {
+  }
+
+  .content-con > .top-box > .content-box > .content > .title {
+    font-size: 18px;
+    padding: 30px 20px 0px;
+  }
+
+  .content-con > .top-box > .content-box > .content > .sub {
+    padding: 0px 20px;
+  }
+
+  .content-con > .top-box > .content-box > .content > .detail-box {
+    padding: 0px 20px;
+  }
+  .content-con > .top-box > .content-box > .content > .detail-box > img {
+  }
+
+  .content-con > .mid-box {
+    padding: 0;
+    width: 100vw;
+    gap: 40px;
+  }
+
+  .content-con > .mid-box > .title-box {
+    display: none;
+  }
+
+  .content-con > .mid-box > .content-box {
+    padding: 0;
+    gap: 0;
+    width: 100%;
+  }
+
+  .content-con > .mid-box > .content-box > .content {
+    padding: 30px 20px;
+    width: 100vw;
+  }
+
+  .content-con > .mid-box > .content-box > .black {
+  }
+
+  .content-con > .mid-box > .content-box > .content > .span-box {
+  }
+
+  .content-con > .mid-box > .content-box > .content > .span-box > .category {
+    font-size: 20px;
+  }
+
+  .content-con > .mid-box > .content-box > .content > .span-box > .title {
+    font-size: 30px;
+  }
+
+  .content-con > .mid-box > .content-box > .content > .span-box > .sub {
+  }
+
+  .content-con > .mid-box > .content-box > .content > img {
+  }
+
+  .mid-box2 {
+  }
+
+  .mid-box2 img {
   }
 }
