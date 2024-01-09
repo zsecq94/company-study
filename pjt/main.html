@@ -3,24 +3,102 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>평귝 상승을 77%!!! 2배를 넘는 주식은 573개!!! 너는 아직도 주식을 고르는 것을 걱정하고 있니?</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
-    <link rel="stylesheet" href="./main.css" type="text/css" />
+    <link rel="stylesheet" href="./style.css" type="text/css" />
     <script>
-      $(document).ready(() => {});
+      $(document).ready(() => {
+        let countdown = 1800;
+
+        setInterval(() => {
+          let minutes = Math.floor(countdown / 60);
+          let seconds = countdown % 60;
+
+          if (minutes < 10) minutes = "0" + minutes;
+          if (seconds < 10) seconds = "0" + seconds;
+
+          $(".timer-box").html(`
+            <span class="span1"><span class="span2">${minutes}</span>분</span>
+            <span class="span1"><span class="span2">${seconds}</span>초</span>
+          `);
+
+          countdown--;
+          if (countdown < 0) {
+            clearInterval(countdown);
+            $(".timer-box").html(`
+            <span class="span1"><span class="span2">00</span>분</span>
+            <span class="span1"><span class="span2">00</span>초</span>
+            `);
+          }
+        }, 1000);
+      });
     </script>
   </head>
   <body>
     <div class="container">
-      <div class="con1">
-        <div class="content">
-          <img src="./images/con1_bg.png" alt="" class="bg" />
-          <img src="./images/con1_1.png" alt="" class="img1" />
-          <div class="btn-box">
-            <h2>친구 추가 후 333 답장 부탁드립니다.</h2>
-          </div>
+      <div class="con1 con">
+        <img src="./images/con1/con1_1.png" alt="" class="img1-1" />
+        <div class="btn-box">
+          <img src="./images/con1/con1_btn1.png" alt="" class="btn1" />
+          <img src="./images/con1/con1_btn2.png" alt="" class="btn2" />
         </div>
       </div>
+      <div class="con2 con">
+        <div class="img-box">
+          <img src="./images/con2/con2_1.png" alt="" />
+          <img src="./images/con2/con2_2.png" alt="" />
+          <img src="./images/con2/con2_3.png" alt="" />
+          <img src="./images/con2/con2_4.png" alt="" />
+        </div>
+      </div>
+      <div class="con3 con">
+        <div class="img-box">
+          <img src="./images/con3/con3_1.png" alt="" />
+        </div>
+      </div>
+      <div class="con4 con">
+        <div class="img-box">
+          <img src="./images/con4/con4_3.png" alt="" class="img1" />
+          <img src="./images/con4/con4_2.png" alt="" class="img2" />
+          <img src="./images/con4/con4_1.png" alt="" class="img3" />
+        </div>
+      </div>
+      <div class="con5 con">
+        <div class="img-box">
+          <img src="./images/con5/con5_1.png" alt="" />
+        </div>
+      </div>
+      <div class="con6 con">
+        <div class="img-box">
+          <img src="./images/con6/con6_1.png" alt="" />
+          <img src="./images/con6/con6_2.png" alt="" />
+        </div>
+      </div>
+      <div class="con7 con">
+        <div class="img-box">
+          <img src="./images/con7/con7_1.png" alt="" />
+        </div>
+      </div>
+      <div class="con8 con">
+        <div class="img-box">
+          <img src="./images/con8/con8_1.png" alt="" />
+          <img src="./images/con8/con8_2.png" alt="" class="img" />
+        </div>
+      </div>
+      <div class="con9 con">
+        <div class="img-box">
+          <img src="./images/con9/con9_1.png" alt="" class="img1" />
+          <div class="timer-box">
+            <span class="span1"><span class="span2">30</span>분</span>
+            <span class="span1"><span class="span2">00</span>초</span>
+          </div>
+          <img src="./images/con9/con9_2.png" alt="" class="img2" />
+          <img src="./images/con9/con9_3.png" alt="" class="img3" />
+        </div>
+      </div>
+      <footer>
+        <img src="./images/footer/footer_1.png" alt="" />
+      </footer>
     </div>
   </body>
 </html>
