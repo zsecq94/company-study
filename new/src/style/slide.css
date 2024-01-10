@@ -1,0 +1,22 @@
+.bg1 {
+  background-image: url("../images/bg/bg1.png");
+}
+.bg2 {
+  background-image: url("../images/bg/bg2.png");
+}
+.bg3 {
+  background-image: url("../images/bg/bg3.png");
+}
+.bg4 {
+  background-image: url("../images/bg/bg4.png");
+}
+.bg5 {
+  background-image: url("../images/bg/bg5.png");
+}
+
+.slide {
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 100vh;
+}
