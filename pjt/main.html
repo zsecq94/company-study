@@ -18,16 +18,16 @@
           if (seconds < 10) seconds = "0" + seconds;
 
           $(".timer-box").html(`
-            <span class="span1"><span class="span2">${minutes}</span> 분</span>
-            <span class="span1"><span class="span2">${seconds}</span> 초</span>
+            <span class="span1"><span class="span2">${minutes}</span>분 </span>
+            <span class="span1"><span class="span2">${seconds}</span>초</span>
           `);
 
           countdown--;
           if (countdown < 0) {
             clearInterval(countdown);
             $(".timer-box").html(`
-            <span class="span1"><span class="span2">00</span> 분</span>
-            <span class="span1"><span class="span2">00</span> 초</span>
+            <span class="span1"><span class="span2">00</span>분 </span>
+            <span class="span1"><span class="span2">00</span>초</span>
             `);
           }
         }, 1000);
@@ -96,7 +96,7 @@
         <div class="box">
           <img src="./images/con10/con10_1.png" alt="" class="img1" />
           <div class="timer-box">
-            <span class="span1"><span class="span2">30</span>분</span>
+            <span class="span1"><span class="span2">30</span>분 </span>
             <span class="span1"><span class="span2">00</span>초</span>
           </div>
           <img src="./images/con10/con10_2.png" alt="" class="img2" />

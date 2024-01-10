@@ -90,7 +90,7 @@ time, mark, audio, video
 }
 
 .con4 .box .img,
-.con9 img {
+.con9 .box > img {
   width: 80%;
 }
 .con6 img {
@@ -131,12 +131,16 @@ time, mark, audio, video
   background: #fff;
   box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1);
   padding: 3%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
 }
 
 .span1 {
   font-size: 40px;
   font-weight: bold;
   color: #666666;
+  margin: 2%;
 }
 
 .span2 {
@@ -162,16 +166,29 @@ time, mark, audio, video
   padding: 5% 0%;
 }
 
+.con4 .box {
+  gap: 60px;
+}
+
+.con9 .box .naver {
+  margin-top: 5%;
+}
+
 .con10 {
   margin-bottom: 100px;
 }
 
-.con10 .box {
-  gap: 50px;
+.con10 > .box > .img1 {
+  margin-bottom: 3%;
 }
 
-.con4 .box {
-  gap: 60px;
+.con10 > .box > .timer-box {
+  margin-bottom: 7%;
+}
+
+.con10 > .box > .img2 {
+  cursor: pointer;
+  margin-bottom: 4%;
 }
 
 footer {
@@ -202,7 +219,7 @@ footer > img {
   }
 
   .con > .box {
-    width: 95%;
+    width: 90%;
   }
 
   .con2 > .box {
@@ -213,40 +230,31 @@ footer > img {
     width: 95%;
   }
 
-  /* /////////////////////// */
-
-  /* 네이버 버튼
-  .con4 > .img-box > .img2,
-  .con8 > .img-box > .img,
-  .con1 > .btn-box .btn1 {
-    width: 30%;
-  } */
-
-  .con5 > .img-box {
-    margin: 15%;
+  .con2 {
+    padding-top: 10%;
   }
 
-  .con6 > .img-box {
-    margin: 15%;
+  .con4 > .box {
+    gap: 0px;
   }
 
-  .con8 > .img-box {
-    margin: 20%;
-    gap: 30px;
+  .con4 > .box > .naver {
+    margin: 5% 0%;
   }
 
-  .con10 > .img-box {
-    margin: 10%;
+  .con4 {
+    padding: 15% 0%;
   }
 
-  .con9 > .img-box {
-    padding: 40px;
-    gap: 20px;
-    margin-bottom: 15%;
+  .con9 {
+    padding: 20% 0%;
   }
 
-  .con9 > .img-box > .img2 {
-    margin-bottom: 0px;
+  .con5,
+  .con6,
+  .con7,
+  .con10 {
+    padding: 10% 0%;
   }
 
   .timer-box {
@@ -261,7 +269,11 @@ footer > img {
   }
 
   .span2 {
-    font-size: 65px;
+    font-size: 55px;
+  }
+
+  .con10 {
+    margin-bottom: 15%;
   }
 
   footer {
@@ -271,5 +283,42 @@ footer > img {
   footer > img {
     margin: 10px;
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .span1 {
+    font-size: 20px;
+  }
+
+  .span2 {
+    font-size: 50px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .span1 {
+    font-size: 15px;
+  }
+
+  .span2 {
+    font-size: 40px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .span1 {
+    font-size: 10px;
+  }
+
+  .span2 {
+    font-size: 35px;
+  }
+}
+@media screen and (max-width: 300px) {
+  .span1 {
+    font-size: 10px;
+  }
+
+  .span2 {
+    font-size: 30px;
   }
 }
